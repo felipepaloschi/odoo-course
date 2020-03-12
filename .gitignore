@@ -1,0 +1,10 @@
+*.pyc
+*.py~
+*.po~
+*.xml~
+.vscode
+.vscode/tags
+royalties/.vscode/tags
+royalties_report/.vscode/tags
+.vscode/*
+*.swp
