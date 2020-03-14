@@ -21,6 +21,8 @@ class ResAnimal(models.Model):
     def _compute_age(self):
         for item in self:
             if item.birthday:
-                item.age = (fields.Date.today() - item.birthday).years
+                item.age = int(
+                    (fields.Date.today() - item.birthday).days / 365.25
+                )
             else:
                 item.age = 0

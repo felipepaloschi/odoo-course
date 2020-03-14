@@ -1,0 +1,386 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* med_vet_manager
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-14 21:05+0000\n"
+"PO-Revision-Date: 2020-03-14 21:05+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_needaction
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_needaction
+msgid "Action Needed"
+msgstr "Ação Necessária"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__activity_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_ids
+msgid "Activities"
+msgstr "Atividades"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__activity_state
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_state
+msgid "Activity State"
+msgstr "Estado de Atividade"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__age
+msgid "Age"
+msgstr "Idade"
+
+#. module: med_vet_manager
+#: model:ir.model,name:med_vet_manager.model_res_animal
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__animal_id
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_filter
+msgid "Animal"
+msgstr "Animal"
+
+#. module: med_vet_manager
+#: model:ir.model,name:med_vet_manager.model_animal_attendance
+msgid "Animal Attendance"
+msgstr "Atendimento ao Animal"
+
+#. module: med_vet_manager
+#: model:ir.model,name:med_vet_manager.model_animal_breed
+msgid "Animal Breed"
+msgstr "Raça"
+
+#. module: med_vet_manager
+#: model:ir.model,name:med_vet_manager.model_animal_species
+msgid "Animal Species"
+msgstr "Espécie"
+
+#. module: med_vet_manager
+#: model:ir.actions.act_window,name:med_vet_manager.action_view_animals
+#: model:ir.ui.menu,name:med_vet_manager.menu_animals_root
+#: model:ir.ui.menu,name:med_vet_manager.menu_animals_tree
+msgid "Animals"
+msgstr "Animais"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_attachment_count
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_attachment_count
+msgid "Attachment Count"
+msgstr "Contagem de Anexos"
+
+#. module: med_vet_manager
+#: model:ir.actions.act_window,name:med_vet_manager.action_view_attendances
+#: model:ir.ui.menu,name:med_vet_manager.menu_attendances_root
+#: model:ir.ui.menu,name:med_vet_manager.menu_attendances_tree
+msgid "Attendances"
+msgstr "Atendimentos"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__birthday
+msgid "Birthday"
+msgstr "Data de Nascimento"
+
+#. module: med_vet_manager
+#: model:ir.actions.act_window,name:med_vet_manager.action_view_animal_breed
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__breed_id
+#: model:ir.ui.menu,name:med_vet_manager.menu_animals_breed
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_filter
+msgid "Breed"
+msgstr "Raça"
+
+#. module: med_vet_manager
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_form
+msgid "Create Invoice"
+msgstr "Criar Fatura"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__create_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__create_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__create_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__create_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__create_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__create_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__description
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_form
+msgid "Description"
+msgstr "Descrição"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__display_name
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__display_name
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__display_name
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__display_name
+msgid "Display Name"
+msgstr "Nome exibido"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_follower_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_channel_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canais)"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_partner_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Parceiros)"
+
+#. module: med_vet_manager
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_breed_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_filter
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__id
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__id
+msgid "ID"
+msgstr ""
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__message_unread
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Se marcado, novas mensagens solicitarão sua atenção."
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__message_needaction
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Se marcado novas mensagens solicitarão sua atenção."
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__message_has_error
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Se marcado, algumas mensagens tem erro de entrega."
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_is_follower
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_is_follower
+msgid "Is Follower"
+msgstr "É um seguidor"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance____last_update
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed____last_update
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species____last_update
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal____last_update
+msgid "Last Modified on"
+msgstr "Última modificação em"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__write_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__write_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__write_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__write_uid
+msgid "Last Updated by"
+msgstr "Última atualização por"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__write_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__write_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__write_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__write_date
+msgid "Last Updated on"
+msgstr "Última atualização em"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_main_attachment_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Anexo Principal"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_has_error
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_has_error
+msgid "Message Delivery error"
+msgstr "Erro de entrega de Mensagem"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_ids
+msgid "Messages"
+msgstr "Mensagens"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__name
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__name
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__name
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__name
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_breed_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_form
+msgid "Name"
+msgstr "Nome"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__activity_date_deadline
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Prazo final para Próxima Atividade"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__activity_summary
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_summary
+msgid "Next Activity Summary"
+msgstr "Próximo Sumário de Atividade"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__activity_type_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_type_id
+msgid "Next Activity Type"
+msgstr "Tipo da Próxima Atividade"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_needaction_counter
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de ações"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_has_error_counter
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_has_error_counter
+msgid "Number of error"
+msgstr "Número do erro"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__message_needaction_counter
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensagens que requer uma ação"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__message_has_error_counter
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensagens com erro de entrega"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__message_unread_counter
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Quantidade de mensagens não lidas."
+
+#. module: med_vet_manager
+#: selection:animal.attendance,activity_state:0
+#: selection:res.animal,activity_state:0
+msgid "Overdue"
+msgstr "Atrasado"
+
+#. module: med_vet_manager
+#: selection:animal.attendance,activity_state:0
+#: selection:res.animal,activity_state:0
+msgid "Planned"
+msgstr "Planejado"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__activity_user_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_user_id
+msgid "Responsible User"
+msgstr "Usuário Responsável"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__service_ids
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_form
+msgid "Services"
+msgstr "Serviços"
+
+#. module: med_vet_manager
+#: model:ir.ui.menu,name:med_vet_manager.menu_animals_settings
+#: model:ir.ui.menu,name:med_vet_manager.menu_attendance_settings
+msgid "Settings"
+msgstr "Configurações"
+
+#. module: med_vet_manager
+#: model:ir.actions.act_window,name:med_vet_manager.action_view_animal_species
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__species_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__species_id
+#: model:ir.ui.menu,name:med_vet_manager.menu_animals_species
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_breed_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_filter
+msgid "Species"
+msgstr "Espécies"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__activity_state
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__activity_state
+msgid "Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr "Status baseado em atividades\n"
+"Atrasado: Data definida já passou\n"
+"Hoje: Data de atividade é hoje\n"
+"Planejado: Atividades futuras."
+
+#. module: med_vet_manager
+#: selection:animal.attendance,activity_state:0
+#: selection:res.animal,activity_state:0
+msgid "Today"
+msgstr "Hoje"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__partner_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__tutor_id
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_filter
+msgid "Tutor"
+msgstr "Tutor"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_unread
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_unread
+msgid "Unread Messages"
+msgstr "Mensagens não lidas"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__message_unread_counter
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de Mensagens Não Lidas"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_attendance__website_message_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__website_message_ids
+msgid "Website Messages"
+msgstr "Mensagens do Site"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_attendance__website_message_ids
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__website_message_ids
+msgid "Website communication history"
+msgstr "Histórico de Comunicação do Site"
+
+#. module: med_vet_manager
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_attendance_form
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_breed_form
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_species_form
+msgid "name"
+msgstr "Nome"
+

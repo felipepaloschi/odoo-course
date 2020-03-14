@@ -11,7 +11,7 @@
     <menuitem name="Animals"
             id="menu_animals_root"
             groups="base.group_user"
-            web_icon="med_vet_manager,static/description/icon.jpg"
+            web_icon="med_vet_manager,static/description/animals.png"
             sequence="30"/>
     
     <menuitem name="Animals"
@@ -33,7 +33,7 @@
             <form>
                 <sheet>
                     <div class="oe_title">
-                        <label for="name" class="oe_edit_only" string="name"/>
+                        <label for="name" class="oe_edit_only" string="Name"/>
                         <h1><field name="name"/></h1>
                     </div>
                     <group>

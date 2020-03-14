@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_view_attendances" model="ir.actions.act_window">
+         <field name="name">Attendances</field>
+         <field name="res_model">animal.attendance</field>
+         <field name="view_type">form</field>
+         <field name="view_mode">tree,form</field>
+   </record>
+
+    <menuitem name="Attendances"
+            id="menu_attendances_root"
+            groups="base.group_user"
+            web_icon="med_vet_manager,static/description/icon.jpg"
+            sequence="35"/>
+    
+    <menuitem name="Attendances"
+            id="menu_attendances_tree"
+            parent="menu_attendances_root"
+            action="action_view_attendances"
+            sequence="1"/>
+    
+    <menuitem name="Settings"
+            id="menu_attendance_settings"
+            parent="menu_attendances_root"
+            sequence="100"/>
+
+
+    <record id="view_animal_attendance_form" model="ir.ui.view">
+        <field name="name">view.animal.attendance.form</field>
+        <field name="model">animal.attendance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="button_generate_invoice"
+                        string="Create Invoice"
+                        type="object" class="oe_highlight"/>
+                    <!-- <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/> -->
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Name"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="animal_id" />
+                            <field name="partner_id" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <pange name="description" string="Description">
+                            <group>
+                                <field name="description" />
+                            </group>
+                        </pange>
+                        <page name="services" string="Services">
+                            <field name="service_ids" domain="[('type', '=', 'service')]"></field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_animal_attendance_tree" model="ir.ui.view">
+        <field name="name">view.animal.attendance.tree</field>
+        <field name="model">animal.attendance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="partner_id" />
+                <!-- <field name="stage_id" /> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_animal_attendance_filter" model="ir.ui.view">
+        <field name="name">view.animal.attendance.filter</field>
+        <field name="model">animal.attendance</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name"/>
+                <field name="animal_id" string="Animal"/>
+                <field name="partner_id" string="Tutor" />
+                <!-- <field name="stage_id" string="Stage" /> -->
+                <group expand="0" string="Group By...">
+                        <!-- <filter string="Stage" name="stage" domain="[]" context="{'group_by':'stage_id'}"/> -->
+                        <filter string="Tutor" name="partner_id" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Animal" name="animal" domain="[]" context="{'group_by':'animal_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

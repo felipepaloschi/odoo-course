@@ -6,3 +6,6 @@ class AnimalSpecies(models.Model):
     _description = "Animal Species"
 
     name = fields.Char(string="Name", required=True)
+    class_id = fields.Many2one(
+        comodel_name="animal.class", string="Class"
+    )
