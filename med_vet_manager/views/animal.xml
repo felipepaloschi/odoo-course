@@ -31,7 +31,19 @@
         <field name="model">res.animal</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="create_new_attendance" type="object" string="Create New Attendance" class="oe_highlight" />
+                </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="action" icon="fa-user-md" title="Attendances">
+                            <field string="Attendances" name="attendance_counter" widget="statinfo"/>
+                        </button>
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Name"/>
                         <h1><field name="name"/></h1>

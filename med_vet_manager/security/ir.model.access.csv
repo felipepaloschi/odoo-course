@@ -9,3 +9,5 @@ access_animal_class,access_animal_class,model_animal_class,base.group_user,1,1,1
 access_animal_class_manager,access_animal_class_manager,model_animal_class,base.group_erp_manager,1,1,1,1
 access_animal_attendance,access_animal_attendance,model_animal_attendance,base.group_user,1,1,1,0
 access_animal_attendance_manager,access_animal_attendance_manager,model_animal_attendance,base.group_erp_manager,1,1,1,1
+access_animal_stage,access_animal_stage,model_animal_stage,base.group_user,1,1,1,0
+access_animal_stage_manager,access_animal_stage_manager,model_animal_stage,base.group_erp_manager,1,1,1,1

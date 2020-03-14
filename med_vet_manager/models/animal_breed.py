@@ -10,3 +10,12 @@ class AnimalBreed(models.Model):
         comodel_name="animal.species", string="Species", required=True
     )
     class_id = fields.Many2one(related="species_id.class_id", string="Class")
+    image = fields.Binary(string="Image", attachment=True)
+
+    _sql_constraints = [
+        (
+            "breed_name_uniq",
+            "unique(name)",
+            "This breed is already on the system!",
+        )
+    ]

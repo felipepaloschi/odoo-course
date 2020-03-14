@@ -15,6 +15,7 @@
         "views/animal_breed.xml",
         "views/animal_class.xml",
         "views/animal_attendance.xml",
+        "data/data.xml",
         "security/ir.model.access.csv",
     ],
     "installable": True,

@@ -5,7 +5,7 @@
          <field name="name">Attendances</field>
          <field name="res_model">animal.attendance</field>
          <field name="view_type">form</field>
-         <field name="view_mode">tree,form</field>
+         <field name="view_mode">kanban,tree,form</field>
    </record>
 
     <menuitem name="Attendances"
@@ -35,9 +35,15 @@
                     <button name="button_generate_invoice"
                         string="Create Invoice"
                         type="object" class="oe_highlight"/>
-                    <!-- <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/> -->
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Name"/>
                         <h1><field name="name"/></h1>
@@ -74,7 +80,7 @@
             <tree>
                 <field name="name" />
                 <field name="partner_id" />
-                <!-- <field name="stage_id" /> -->
+                <field name="stage_id" />
             </tree>
         </field>
     </record>
@@ -87,13 +93,136 @@
                 <field name="name" string="Name"/>
                 <field name="animal_id" string="Animal"/>
                 <field name="partner_id" string="Tutor" />
-                <!-- <field name="stage_id" string="Stage" /> -->
+                <field name="stage_id" string="Stage" />
                 <group expand="0" string="Group By...">
-                        <!-- <filter string="Stage" name="stage" domain="[]" context="{'group_by':'stage_id'}"/> -->
+                        <filter string="Stage" name="stage" domain="[]" context="{'group_by':'stage_id'}"/>
                         <filter string="Tutor" name="partner_id" domain="[]" context="{'group_by':'partner_id'}"/>
                         <filter string="Animal" name="animal" domain="[]" context="{'group_by':'animal_id'}"/>
                 </group>
             </search>
+        </field>
+    </record>
+
+    <record id="quick_create_attendance" model="ir.ui.view">
+        <field name="name">animal.attendance.form.quick_create</field>
+        <field name="model">animal.attendance</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name" />
+                    <field name="animal_id" options="{'no_create': True}" required="1"/>
+                    <field name="partner_id" options="{'no_create': True}" required="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_animal_attendance_kanban">
+        <field name="name">animal.attendance.kanban</field>
+        <field name="model">animal.attendance</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id" class="o_kanban_small_column" on_create="quick_create" quick_create_view="med_vet_manager.quick_create_attendance"
+                    archivable="false" group_create="false">
+                    <field name="stage_id" options='{"group_by_tooltip": {"requirements": "Description", "legend_priority": "Use of stars"}}'/>
+                    <field name="name"/>
+                    <field name="color"/>
+                    <field name="message_needaction_counter"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="active"/>
+                    <field name="activity_state" />
+                    <field name="activity_ids" />
+                    <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}' help="This bar allows to filter the service orders based on scheduled activities."/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown">
+
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                                        <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div>
+                                        <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                    </div>
+                                    <div>
+                                        <t><span>Animal: </span></t><field name="animal_id" widget="many2one"/>
+                                    </div>
+                                    <div>
+                                        <t><span>Tutor: </span></t><field name="partner_id"/>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left">
+                                            <t t-if="record.message_needaction_counter.raw_value">
+                                                <span role="alert" class='oe_kanban_mail_new' title='Unread Messages'><i class='fa fa-comments' aria-label="Unread messages" role="img"/><t t-raw="record.message_needaction_counter.raw_value"/></span>
+                                            </t>
+                                            <field name="activity_ids" widget="kanban_activity"/>
+                                        </div>
+                                        <!-- <div class="oe_kanban_bottom_right">
+                                            <img t-att-src="kanban_image('animal.breed', 'image', record.animal_id.breed_id.raw_value)" t-att-title="record.user_id.value" t-att-alt="record.user_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="oe_clear"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+        </field>
+    </record>
+
+
+    <!-- ANIMAL STAGE VIEWS -->
+
+    <record id="action_view_animal_stage" model="ir.actions.act_window">
+         <field name="name">Stages</field>
+         <field name="res_model">animal.stage</field>
+         <field name="view_type">form</field>
+         <field name="view_mode">tree,form</field>
+   </record>
+
+    <menuitem name="Stages"
+            id="menu_animals_stages"
+            parent="menu_attendance_settings"
+            action="action_view_animal_stage"
+            sequence="10"/>
+
+    <record id="view_animal_stage_form" model="ir.ui.view">
+        <field name="name">view.animal.stage.form</field>
+        <field name="model">animal.stage</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Name"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sequence" />
+                            <field name="fold" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_animal_stage_tree" model="ir.ui.view">
+        <field name="name">view.animal.stage.tree</field>
+        <field name="model">animal.stage</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="sequence" />
+                <field name="fold" />
+            </tree>
         </field>
     </record>
 </odoo>
