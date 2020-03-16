@@ -10,6 +10,7 @@
     "contributors": ["Felipe Paloschi <paloschi.eca@gmail.com>"],
     "depends": ["mail", "sale"],
     "data": [
+        "wizard/attendance_invoicing.xml",
         "views/animal.xml",
         "views/animal_species.xml",
         "views/animal_breed.xml",

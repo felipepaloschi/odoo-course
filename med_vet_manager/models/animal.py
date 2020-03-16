@@ -29,7 +29,7 @@ class ResAnimal(models.Model):
     birthday = fields.Date(string="Birthday", track_visibility="onchange")
     age = fields.Integer(string="Age", compute="_compute_age")
     active = fields.Boolean(
-        string="Active", deafult=True, track_visibility="onchange"
+        string="Active", default=True, track_visibility="onchange"
     )
     attendance_counter = fields.Integer(
         string="Attendance Counter", compute="_compute_attendance_counter"
