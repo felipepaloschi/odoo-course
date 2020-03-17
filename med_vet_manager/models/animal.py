@@ -69,3 +69,12 @@ class ResAnimal(models.Model):
             "target": "current",
             "res_id": attendance.id,
         }
+
+    def open_attendances(self):
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "animal.attendance",
+            "views": [[False, "tree"], [False, "form"]],
+            "domain": [["animal_id", "=", self.id]],
+            "name": "{} Attendancies".format(self.name),
+        }

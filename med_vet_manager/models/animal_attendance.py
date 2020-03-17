@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class AnimalAttendance(models.Model):
@@ -48,9 +49,18 @@ class AnimalAttendance(models.Model):
     total_invoiced = fields.Float(
         string="Total Invoiced Products", compute="_compute_total_invoiced"
     )
+    invoice_counter = fields.Integer(
+        string="Invoice Counter", compute="_compute_invoice_counter"
+    )
 
-    def button_generate_invoice(self):
-        return
+    @api.multi
+    def _compute_invoice_counter(self):
+        for item in self:
+            item.invoice_counter = len(
+                item.attendance_product_ids.mapped("invoice_line_id").mapped(
+                    "invoice_id"
+                )
+            )
 
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
@@ -96,16 +106,26 @@ class AnimalAttendanceProduct(models.Model):
     _description = "Animal Attendance product"
 
     product_id = fields.Many2one(
-        comodel_name="product.template",
-        string="Product",
+        comodel_name="product.product", string="Product",
     )
     quantity = fields.Integer(string="Quantity", default=1)
     price_unit = fields.Float(string="Price Unit")
     subtotal = fields.Float(string="Subtotal", compute="_compute_subtotal")
-    invoiced = fields.Boolean(string="Invoiced", readonly=True)
+    invoiced = fields.Boolean(
+        string="Invoiced", compute="_compute_invoiced", store=True
+    )
     attendance_id = fields.Many2one(
         comodel_name="animal.attendance", string="Attendance"
     )
+    invoice_line_id = fields.Many2one(
+        comodel_name="account.invoice.line", string="Invoice Line"
+    )
+
+    @api.multi
+    @api.depends("invoice_line_id")
+    def _compute_invoiced(self):
+        for item in self:
+            item.invoiced = True if item.invoice_line_id else False
 
     @api.multi
     @api.onchange("product_id")
@@ -118,3 +138,9 @@ class AnimalAttendanceProduct(models.Model):
     def _compute_subtotal(self):
         for item in self:
             item.subtotal = item.price_unit * item.quantity
+
+    @api.multi
+    def unlink(self):
+        if any(item.invoiced for item in self):
+            raise UserError(_("You can't delete a invoiced line!"))
+        return super(AnimalAttendanceProduct, self).unlunk()

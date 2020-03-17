@@ -40,6 +40,9 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" icon="fa-dollar" title="Invoices">
+                            <field string="Invoices" name="invoice_counter" widget="statinfo"/>
+                        </button>
                         <button name="toggle_active" type="object"
                                 class="oe_stat_button" icon="fa-archive">
                             <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
@@ -69,6 +72,7 @@
                                     <field name="price_unit" />
                                     <field name="subtotal" />
                                     <field name="invoiced" />
+                                    <field name="invoice_line_id" invisible="1" />
                                 </tree>
                             </field>
                             <group class="oe_subtotal_footer oe_right" colspan="2">
