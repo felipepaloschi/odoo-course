@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_invoice_animal_field" model="ir.ui.view">
+        <field name="name">account.invoice.animal.field</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="animal_id" domain="[('tutor_id', '=', partner_id)]"/>
+            </field>
+        </field>
+    </record>
+</odoo>

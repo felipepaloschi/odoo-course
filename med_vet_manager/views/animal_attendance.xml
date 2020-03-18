@@ -40,7 +40,7 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" type="object" icon="fa-dollar" title="Invoices">
+                        <button class="oe_stat_button" name="open_invoices" type="object" icon="fa-dollar" title="Invoices">
                             <field string="Invoices" name="invoice_counter" widget="statinfo"/>
                         </button>
                         <button name="toggle_active" type="object"
@@ -56,6 +56,9 @@
                         <group>
                             <field name="animal_id" />
                             <field name="partner_id" />
+                        </group>
+                        <group>
+                            <field name="date" />
                         </group>
                     </group>
                     <notebook>
@@ -152,6 +155,7 @@
                     <field name="message_needaction_counter"/>
                     <field name="partner_id"/>
                     <field name="user_id"/>
+                    <field name="date"/>
                     <field name="active"/>
                     <field name="activity_state" />
                     <field name="activity_ids" />
@@ -175,6 +179,9 @@
                                         <strong class="o_kanban_record_title"><field name="name"/></strong>
                                     </div>
                                     <div>
+                                        <t><span>Date: </span></t><field name="date"/>
+                                    </div>
+                                    <div>
                                         <t><span>Animal: </span></t><field name="animal_id" widget="many2one"/>
                                     </div>
                                     <div>
@@ -187,9 +194,6 @@
                                             </t>
                                             <field name="activity_ids" widget="kanban_activity"/>
                                         </div>
-                                        <!-- <div class="oe_kanban_bottom_right">
-                                            <img t-att-src="kanban_image('animal.breed', 'image', record.animal_id.breed_id.raw_value)" t-att-title="record.user_id.value" t-att-alt="record.user_id.value" width="24" height="24" class="oe_kanban_avatar"/>
-                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="oe_clear"/>

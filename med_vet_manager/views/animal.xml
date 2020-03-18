@@ -36,6 +36,9 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="open_invoices" type="object" icon="fa-dollar" title="Invoiced">
+                            <field string="Invoiced" name="amount_invoiced" widget="statinfo monetary"/>
+                        </button>
                         <button class="oe_stat_button" name="open_attendances" type="object" icon="fa-user-md" title="Attendances">
                             <field string="Attendances" name="attendance_counter" widget="statinfo"/>
                         </button>

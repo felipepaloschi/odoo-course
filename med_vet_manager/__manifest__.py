@@ -16,6 +16,8 @@
         "views/animal_breed.xml",
         "views/animal_class.xml",
         "views/animal_attendance.xml",
+        "views/account_invoice.xml",
+        "reports/attendance_report.xml",
         "data/data.xml",
         "security/ir.model.access.csv",
     ],

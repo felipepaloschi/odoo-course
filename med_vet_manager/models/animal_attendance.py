@@ -7,6 +7,8 @@ class AnimalAttendance(models.Model):
     _description = "Animal Attendance"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
+    _order = "date, id"
+
     def _get_attendance_name(self):
         return self.env["ir.sequence"].next_by_code(
             "attendance.name.sequence"
@@ -53,6 +55,8 @@ class AnimalAttendance(models.Model):
         string="Invoice Counter", compute="_compute_invoice_counter"
     )
 
+    date = fields.Datetime(string="Date")
+
     @api.multi
     def _compute_invoice_counter(self):
         for item in self:
@@ -90,6 +94,18 @@ class AnimalAttendance(models.Model):
                 for product in item.attendance_product_ids
                 if product.invoiced
             )
+
+    def open_invoices(self):
+        invoices = self.attendance_product_ids.mapped(
+            "invoice_line_id"
+        ).mapped("invoice_id")
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "account.invoice",
+            "views": [[False, "tree"], [False, "form"]],
+            "domain": [["id", "in", invoices.ids]],
+            "name": "{} - {} Invoices".format(self.name, self.animal_id.name),
+        }
 
 
 class AnimalStage(models.Model):

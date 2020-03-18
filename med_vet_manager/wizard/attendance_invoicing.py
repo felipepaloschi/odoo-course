@@ -52,6 +52,7 @@ class AttendanceInvoicing(models.TransientModel):
         invoice = self.env["account.invoice"].create(
             {
                 "partner_id": self.attendance_id.partner_id.id,
+                "animal_id": self.attendance_id.animal_id.id,
             }
         )
         InvoiceLine = self.env["account.invoice.line"]

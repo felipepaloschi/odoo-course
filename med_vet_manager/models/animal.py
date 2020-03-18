@@ -34,6 +34,9 @@ class ResAnimal(models.Model):
     attendance_counter = fields.Integer(
         string="Attendance Counter", compute="_compute_attendance_counter"
     )
+    amount_invoiced = fields.Float(
+        string="Amount Invoiced", compute="_compute_amount_invoiced"
+    )
 
     @api.multi
     def _compute_age(self):
@@ -45,11 +48,23 @@ class ResAnimal(models.Model):
             else:
                 item.age = 0
 
+    @api.multi
     def _compute_attendance_counter(self):
         for item in self:
             item.attendance_counter = self.env[
                 "animal.attendance"
             ].search_count([("animal_id", "=", item.id)])
+
+    @api.multi
+    def _compute_amount_invoiced(self):
+        for item in self:
+            invoices = self.env["account.invoice"].search(
+                [
+                    ("animal_id", "=", item.id),
+                    ("state", "in", ["open", "paid"]),
+                ]
+            )
+            item.amount_invoiced = sum(inv.amount_total for inv in invoices)
 
     def create_new_attendance(self):
         attendance = self.env["animal.attendance"].create(
@@ -77,4 +92,13 @@ class ResAnimal(models.Model):
             "views": [[False, "tree"], [False, "form"]],
             "domain": [["animal_id", "=", self.id]],
             "name": "{} Attendancies".format(self.name),
+        }
+
+    def open_invoices(self):
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "account.invoice",
+            "views": [[False, "tree"], [False, "form"]],
+            "domain": [["animal_id", "=", self.id]],
+            "name": "{} Invoices".format(self.name),
         }
