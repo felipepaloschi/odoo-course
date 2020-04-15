@@ -56,6 +56,11 @@ class AnimalAttendance(models.Model):
     )
 
     date = fields.Datetime(string="Date")
+    currency_id = fields.Many2one(
+        comodel_name="res.currency",
+        string="Currency",
+        default=lambda self: self.env.user.company_id.currency_id.id,
+    )
 
     @api.multi
     def _compute_invoice_counter(self):

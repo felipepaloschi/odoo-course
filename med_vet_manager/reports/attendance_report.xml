@@ -13,25 +13,63 @@
             <t t-call="web.external_layout">
                 <t t-foreach="docs" t-as="o">
                     <div class="page">
-                        <h2>Attendance Report</h2>
+                        <h2>Relatório de Atendimento</h2>
                         <div class="row">
-                            <div class="col-md">
-                                INFORMAÇÕES PARCEIRO
+                            <div class="col-6">
+                                <p>INFORMAÇÕES DO TUTOR:</p>
+                                <div t-field="o.partner_id"
+                                     t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
                             </div>
-                            <div class="col-md">
-                                INFORMAÇÕES ANIMAL
+                            <div class="col-6">
+                                <p>INFORMAÇÕES DO ANIMAL:</p>
+                                <p>Espécie - Raça: <span t-field="o.animal_id.species_id" /> - <span t-field="o.animal_id.breed_id" /></p>
+                                <p>Nascimento: <span t-field="o.animal_id.birthday" /></p>
+                                <p>Idade: <span t-field="o.animal_id.age" /></p>
                             </div>
                         </div>
-                        <div id="informations" class="row">
-                            <div class="col-md" t-if="o.name" name="name">
-                                <strong>Code:</strong>
+                        <div id="informations" class="row" style="margin: 50px;">
+                            <div class="col-4" t-if="o.name" name="name">
+                                <p><strong>Código:</strong></p>
                                 <p class="m-0" t-field="o.name"/>
                             </div>
-                            <div class="col-md" t-if="o.date">
-                                <strong>Date:</strong>
+                            <div class="col-4" t-if="o.date">
+                                <p><strong>Data:</strong></p>
                                 <p class="m-0" t-field="o.date"/>
                             </div>
+                            <div class="col-4" t-if="o.date">
+                                <p><strong>Estágio:</strong></p>
+                                <p class="m-0" t-field="o.stage_id"/>
+                            </div>
                         </div>
+                        <h3>Produtos e Serviços</h3>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Subtotal</th>
+                                    <th>Faturado?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.attendance_product_ids" t-as="product">
+                                    <tr>
+                                        <td><span t-field="product.product_id" /></td>
+                                        <td><span t-field="product.quantity" /></td>
+                                        <td><span t-field="product.price_unit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                        <td><span t-field="product.subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}' /></td>
+                                        <td>
+                                            <t t-if="product.invoiced">
+                                                <i class="fa fa-check" />
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <p class="text-right"><strong>Total: </strong><span t-field="o.total_products" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></p>
+                        <p class="text-right"><strong>Total Invoiced: </strong><span t-field="o.total_invoiced" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></p>
                     </div>
                 </t>
             </t>
