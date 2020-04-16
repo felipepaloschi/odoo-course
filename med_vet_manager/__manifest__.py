@@ -8,7 +8,7 @@
     "category": "Sales",
     "author": "Felipe Paloschi",
     "contributors": ["Felipe Paloschi <paloschi.eca@gmail.com>"],
-    "depends": ["mail", "sale"],
+    "depends": ["mail", "sale", "portal"],
     "data": [
         "wizard/attendance_invoicing.xml",
         "views/animal.xml",
@@ -17,6 +17,7 @@
         "views/animal_class.xml",
         "views/animal_attendance.xml",
         "views/account_invoice.xml",
+        "templates/main.xml",
         "reports/attendance_report.xml",
         "data/data.xml",
         "security/ir.model.access.csv",
