@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class ResAnimal(models.Model):
     _name = "res.animal"
     _description = "Animal"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _inherit = ["mail.thread", "mail.activity.mixin", "portal.mixin"]
 
     name = fields.Char(
         string="Name", required=True, track_visibility="always"
@@ -31,12 +31,17 @@ class ResAnimal(models.Model):
     active = fields.Boolean(
         string="Active", default=True, track_visibility="onchange"
     )
-    attendance_counter = fields.Integer(
-        string="Attendance Counter", compute="_compute_attendance_counter"
+    consultation_counter = fields.Integer(
+        string="Consultation Counter", compute="_compute_consultation_counter"
     )
     amount_invoiced = fields.Float(
         string="Amount Invoiced", compute="_compute_amount_invoiced"
     )
+
+    def _compute_access_url(self):
+        super(ResAnimal, self)._compute_access_url()
+        for animal in self:
+            animal.access_url = '/my/animals/%s' % (animal.id)
 
     @api.multi
     def _compute_age(self):
@@ -49,10 +54,10 @@ class ResAnimal(models.Model):
                 item.age = 0
 
     @api.multi
-    def _compute_attendance_counter(self):
+    def _compute_consultation_counter(self):
         for item in self:
-            item.attendance_counter = self.env[
-                "animal.attendance"
+            item.consultation_counter = self.env[
+                "animal.consultation"
             ].search_count([("animal_id", "=", item.id)])
 
     @api.multi
@@ -66,32 +71,32 @@ class ResAnimal(models.Model):
             )
             item.amount_invoiced = sum(inv.amount_total for inv in invoices)
 
-    def create_new_attendance(self):
-        attendance = self.env["animal.attendance"].create(
+    def create_new_consultation(self):
+        consultation = self.env["animal.consultation"].create(
             {
                 "animal_id": self.id,
                 "partner_id": self.tutor_id.id,
                 "stage_id": self.env.ref(
-                    "med_vet_manager.attendance_waiting_attendance"
+                    "med_vet_manager.consultation_waiting_consultation"
                 ).id,
             }
         )
         return {
             "view_type": "form",
             "view_mode": "form",
-            "res_model": "animal.attendance",
+            "res_model": "animal.consultation",
             "type": "ir.actions.act_window",
             "target": "current",
-            "res_id": attendance.id,
+            "res_id": consultation.id,
         }
 
-    def open_attendances(self):
+    def open_consultations(self):
         return {
             "type": "ir.actions.act_window",
-            "res_model": "animal.attendance",
+            "res_model": "animal.consultation",
             "views": [[False, "tree"], [False, "form"]],
             "domain": [["animal_id", "=", self.id]],
-            "name": "{} Attendancies".format(self.name),
+            "name": "{} Consultations".format(self.name),
         }
 
     def open_invoices(self):

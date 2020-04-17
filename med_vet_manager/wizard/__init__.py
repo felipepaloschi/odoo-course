@@ -1,1 +1,1 @@
-from . import attendance_invoicing
+from . import consultation_invoicing

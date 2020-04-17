@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="action_view_attendances" model="ir.actions.act_window">
-         <field name="name">Attendances</field>
-         <field name="res_model">animal.attendance</field>
+    <record id="action_view_consultations" model="ir.actions.act_window">
+         <field name="name">Consultations</field>
+         <field name="res_model">animal.consultation</field>
          <field name="view_type">form</field>
          <field name="view_mode">kanban,tree,form</field>
    </record>
 
-    <menuitem name="Attendances"
-            id="menu_attendances_root"
+    <menuitem name="Consultations"
+            id="menu_consultations_root"
             groups="base.group_user"
             web_icon="med_vet_manager,static/description/icon.jpg"
             sequence="35"/>
     
-    <menuitem name="Attendances"
-            id="menu_attendances_tree"
-            parent="menu_attendances_root"
-            action="action_view_attendances"
+    <menuitem name="Consultations"
+            id="menu_consultations_tree"
+            parent="menu_consultations_root"
+            action="action_view_consultations"
             sequence="1"/>
     
     <menuitem name="Settings"
-            id="menu_attendance_settings"
-            parent="menu_attendances_root"
+            id="menu_consultation_settings"
+            parent="menu_consultations_root"
             sequence="100"/>
 
 
-    <record id="view_animal_attendance_form" model="ir.ui.view">
-        <field name="name">view.animal.attendance.form</field>
-        <field name="model">animal.attendance</field>
+    <record id="view_animal_consultation_form" model="ir.ui.view">
+        <field name="name">view.animal.consultation.form</field>
+        <field name="model">animal.consultation</field>
+        <field name="priority">1</field>
         <field name="arch" type="xml">
             <form>
                 <header>
                     <button
-                        name="%(action_attendance_invoicing_wizard_form)d"
+                        name="%(action_consultation_invoicing_wizard_form)d"
                         string="Create Invoice"
                         type="action" class="oe_highlight"/>
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
@@ -68,7 +69,7 @@
                             </group>
                         </pange>
                         <page name="products" string="Products">
-                            <field name="attendance_product_ids">
+                            <field name="consultation_product_ids">
                                 <tree name="products" editable="bottom" create="true" edit="true">
                                     <field name="product_id" />
                                     <field name="quantity" />
@@ -99,9 +100,9 @@
         </field>
     </record>
 
-    <record id="view_animal_attendance_tree" model="ir.ui.view">
-        <field name="name">view.animal.attendance.tree</field>
-        <field name="model">animal.attendance</field>
+    <record id="view_animal_consultation_tree" model="ir.ui.view">
+        <field name="name">view.animal.consultation.tree</field>
+        <field name="model">animal.consultation</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
@@ -111,9 +112,9 @@
         </field>
     </record>
 
-    <record id="view_animal_attendance_filter" model="ir.ui.view">
-        <field name="name">view.animal.attendance.filter</field>
-        <field name="model">animal.attendance</field>
+    <record id="view_animal_consultation_filter" model="ir.ui.view">
+        <field name="name">view.animal.consultation.filter</field>
+        <field name="model">animal.consultation</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name" string="Name"/>
@@ -129,25 +130,26 @@
         </field>
     </record>
 
-    <record id="quick_create_attendance" model="ir.ui.view">
-        <field name="name">animal.attendance.form.quick_create</field>
-        <field name="model">animal.attendance</field>
+    <record id="quick_create_consultation" model="ir.ui.view">
+        <field name="name">animal.consultation.form.quick_create</field>
+        <field name="model">animal.consultation</field>
+        <field name="priority">100</field>
         <field name="arch" type="xml">
             <form>
                 <group>
                     <field name="name" />
-                    <field name="animal_id" options="{'no_create': True}" required="1"/>
                     <field name="partner_id" options="{'no_create': True}" required="1"/>
+                    <field name="animal_id" options="{'no_create': True}" required="1" domain="[('tutor_id', '=', partner_id)]"/>
                 </group>
             </form>
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_animal_attendance_kanban">
-        <field name="name">animal.attendance.kanban</field>
-        <field name="model">animal.attendance</field>
+    <record model="ir.ui.view" id="view_animal_consultation_kanban">
+        <field name="name">animal.consultation.kanban</field>
+        <field name="model">animal.consultation</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="stage_id" class="o_kanban_small_column" on_create="quick_create" quick_create_view="med_vet_manager.quick_create_attendance"
+            <kanban default_group_by="stage_id" class="o_kanban_small_column" on_create="quick_create" quick_create_view="med_vet_manager.quick_create_consultation"
                     archivable="false" group_create="false">
                     <field name="stage_id" options='{"group_by_tooltip": {"requirements": "Description", "legend_priority": "Use of stars"}}'/>
                     <field name="name"/>
@@ -216,7 +218,7 @@
 
     <menuitem name="Stages"
             id="menu_animals_stages"
-            parent="menu_attendance_settings"
+            parent="menu_consultation_settings"
             action="action_view_animal_stage"
             sequence="10"/>
 

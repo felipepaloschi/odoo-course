@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <record id="view_attendance_invoicing_wizard_form" model="ir.ui.view">
-        <field name="name">View Attendance Invoicing Wizard</field>
-        <field name="model">attendance.invoicing</field>
+    <record id="view_consultation_invoicing_wizard_form" model="ir.ui.view">
+        <field name="name">View Consultation Invoicing Wizard</field>
+        <field name="model">consultation.invoicing</field>
         <field name="arch" type="xml">
-            <form string="Attendance Invoicing">
-                <field name="attendance_id" invisible="1" />
-                <field name="attendance_line_ids" nolabel="1">
+            <form string="Consultation Invoicing">
+                <field name="consultation_id" invisible="1" />
+                <field name="consultation_line_ids" nolabel="1">
                     <tree editable="bottom" create="false" delete="false">
-                        <field name="attendance_invoicing_id" invisible="1"/>
-                        <field name="attendance_product_id" invisible="1"/>
+                        <field name="consultation_invoicing_id" invisible="1"/>
+                        <field name="consultation_product_id" invisible="1"/>
                         <field name="product_id" />
                         <field name="quantity" />
                         <field name="price_unit" />
@@ -33,9 +33,9 @@
         </field>
     </record>
 
-    <record id="action_attendance_invoicing_wizard_form" model="ir.actions.act_window">
-        <field name="name">Attendance Invoicing</field>
-        <field name="res_model">attendance.invoicing</field>
+    <record id="action_consultation_invoicing_wizard_form" model="ir.actions.act_window">
+        <field name="name">Consultation Invoicing</field>
+        <field name="res_model">consultation.invoicing</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>

@@ -2,16 +2,16 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
 
-class AnimalAttendance(models.Model):
-    _name = "animal.attendance"
-    _description = "Animal Attendance"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
+class AnimalConsultation(models.Model):
+    _name = "animal.consultation"
+    _description = "Animal Consultation"
+    _inherit = ["mail.thread", "mail.activity.mixin", "portal.mixin"]
 
     _order = "date, id"
 
-    def _get_attendance_name(self):
+    def _get_consultation_name(self):
         return self.env["ir.sequence"].next_by_code(
-            "attendance.name.sequence"
+            "consultation.name.sequence"
         )
 
     name = fields.Char(
@@ -19,15 +19,15 @@ class AnimalAttendance(models.Model):
         readonly=True,
         copy=False,
         required=True,
-        default=_get_attendance_name,
+        default=_get_consultation_name,
         track_visibility="always",
     )
     description = fields.Text(string="Description")
     animal_id = fields.Many2one(comodel_name="res.animal", string="Animal")
     partner_id = fields.Many2one(comodel_name="res.partner", string="Tutor")
-    attendance_product_ids = fields.One2many(
-        comodel_name="animal.attendance.product",
-        inverse_name="attendance_id",
+    consultation_product_ids = fields.One2many(
+        comodel_name="animal.consultation.product",
+        inverse_name="consultation_id",
         string="Products",
     )
     stage_id = fields.Many2one(
@@ -66,9 +66,9 @@ class AnimalAttendance(models.Model):
     def _compute_invoice_counter(self):
         for item in self:
             item.invoice_counter = len(
-                item.attendance_product_ids.mapped("invoice_line_id").mapped(
-                    "invoice_id"
-                )
+                item.consultation_product_ids.mapped(
+                    "invoice_line_id"
+                ).mapped("invoice_id")
             )
 
     @api.model
@@ -88,7 +88,7 @@ class AnimalAttendance(models.Model):
     def _compute_total_products(self):
         for item in self:
             item.total_products = sum(
-                product.subtotal for product in item.attendance_product_ids
+                product.subtotal for product in item.consultation_product_ids
             )
 
     @api.multi
@@ -96,12 +96,12 @@ class AnimalAttendance(models.Model):
         for item in self:
             item.total_invoiced = sum(
                 product.subtotal
-                for product in item.attendance_product_ids
+                for product in item.consultation_product_ids
                 if product.invoiced
             )
 
     def open_invoices(self):
-        invoices = self.attendance_product_ids.mapped(
+        invoices = self.consultation_product_ids.mapped(
             "invoice_line_id"
         ).mapped("invoice_id")
         return {
@@ -111,6 +111,32 @@ class AnimalAttendance(models.Model):
             "domain": [["id", "in", invoices.ids]],
             "name": "{} - {} Invoices".format(self.name, self.animal_id.name),
         }
+
+    def check_animal_tutor(self):
+        if self.partner_id != self.animal_id.tutor_id:
+            raise UserError(
+                _("The consultation partner must be the animal tutor!")
+            )
+
+    @api.model
+    def create(self, vals):
+        res = super(AnimalConsultation, self).create(vals)
+        res.check_animal_tutor()
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super(AnimalConsultation, self).write(vals)
+        for item in self:
+            item.check_animal_tutor()
+        return res
+
+    def _compute_access_url(self):
+        super(AnimalConsultation, self)._compute_access_url()
+        for consultation in self:
+            consultation.access_url = "/my/consultations/%s" % (
+                consultation.id
+            )
 
 
 class AnimalStage(models.Model):
@@ -122,9 +148,9 @@ class AnimalStage(models.Model):
     fold = fields.Boolean(string="Fold")
 
 
-class AnimalAttendanceProduct(models.Model):
-    _name = "animal.attendance.product"
-    _description = "Animal Attendance product"
+class AnimalConsultationProduct(models.Model):
+    _name = "animal.consultation.product"
+    _description = "Animal Consultation product"
 
     product_id = fields.Many2one(
         comodel_name="product.product", string="Product",
@@ -135,8 +161,8 @@ class AnimalAttendanceProduct(models.Model):
     invoiced = fields.Boolean(
         string="Invoiced", compute="_compute_invoiced", store=True
     )
-    attendance_id = fields.Many2one(
-        comodel_name="animal.attendance", string="Attendance"
+    consultation_id = fields.Many2one(
+        comodel_name="animal.consultation", string="Consultation"
     )
     invoice_line_id = fields.Many2one(
         comodel_name="account.invoice.line", string="Invoice Line"
@@ -164,4 +190,4 @@ class AnimalAttendanceProduct(models.Model):
     def unlink(self):
         if any(item.invoiced for item in self):
             raise UserError(_("You can't delete a invoiced line!"))
-        return super(AnimalAttendanceProduct, self).unlunk()
+        return super(AnimalConsultationProduct, self).unlunk()

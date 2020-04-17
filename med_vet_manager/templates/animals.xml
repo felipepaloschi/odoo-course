@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_animal" name="Portal My Home : animal entries" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="animal_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Animals</t>
+                <t t-set="url" t-value="'/my/animals'"/>
+                <t t-set="count" t-value="animal_count"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="animals_list" name="My Animals">
+        <t t-call="portal.portal_layout">
+
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Animals</t>
+            </t>
+
+            <t t-if="not animals">
+                <p>There are currently no animals for your account.</p>
+            </t>
+
+            <t t-if="animals" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Animal #</th>
+                        <th>Species</th>
+                        <th>Breed</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="animals" t-as="animal">
+                        <tr>
+                            <td><a t-att-href="animal.get_portal_url()" ><span t-field="animal.name"/></a></td>
+                            <td><span t-field="animal.species_id"/></td>
+                            <td><span t-field="animal.breed_id"/></td>
+                            <td><span t-field="animal.age"/> years</td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+        </t>
+
+    </template>
+
+    <template id="portal_layout" name="Portal layout: project menu entry" inherit_id="portal.portal_breadcrumbs" priority="40">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name in ['my_animals', 'animal']" t-attf-class="breadcrumb-item #{'active ' if not animals else ''}">
+                <a t-if="animal" t-attf-href="/my/animals?{{ keep_query() }}">Animals</a>
+                <t t-else="">Animals</t>
+            </li>
+            <li t-if="animal" class="breadcrumb-item active">
+                <t t-esc="animal.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_animal" name="My Animal">
+        <t t-call="portal.portal_layout">
+
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <h5><span t-field="animal.name" /></h5>
+                </t>
+                <t t-set="card_body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Tutor: </strong><span t-field="animal.tutor_id" /></p>
+                            <p><strong>Birthday: </strong><span t-field="animal.birthday" /></p>
+                            <p><strong>Age: </strong><span t-field="animal.age" /> years</p>
+                            <p><strong>Species: </strong><span t-field="animal.species_id" /></p>
+                            <p><strong>Breed: </strong><span t-field="animal.breed_id" /></p>
+                        </div>
+                        <div class="col-6">
+                            <div class="text-center" style="max-width: 300px;">
+                                <img t-if="animal.breed_id.image" class="img-thumbnail rounded" t-att-src="image_data_uri(animal.breed_id.image)" t-att-alt="animal.breed_id.name"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

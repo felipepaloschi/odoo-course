@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_consultation" name="Portal My Home : consultation entries" inherit_id="portal.portal_my_home" priority="50">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="consultation_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Consultations</t>
+                <t t-set="url" t-value="'/my/consultations'"/>
+                <t t-set="count" t-value="consultation_count"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="consultations_list" name="My Consultations">
+        <t t-call="portal.portal_layout">
+
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Consultations</t>
+            </t>
+
+            <t t-if="not consultations">
+                <p>There are currently no consultations for your account.</p>
+            </t>
+
+            <t t-if="consultations" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Consultations #</th>
+                        <th>Animal</th>
+                        <th>Tutor</th>
+                        <th>Date</th>
+                        <th>Stage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="consultations" t-as="att">
+                        <tr>
+                            <td><a t-att-href="att.get_portal_url()" ><span t-field="att.name"/></a></td>
+                            <td><a t-att-href="att.animal_id.get_portal_url()" ><span t-field="att.animal_id"/></a></td>
+                            <td><span t-field="att.partner_id"/></td>
+                            <td><span t-field="att.date"/></td>
+                            <td><span t-field="att.stage_id"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+        </t>
+
+    </template>
+
+    <template id="portal_layout_consultations" name="Portal layout: project menu entry" inherit_id="portal.portal_breadcrumbs" priority="40">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name in ['my_consultations', 'consultation']" t-attf-class="breadcrumb-item #{'active ' if not consultations else ''}">
+                <a t-if="consultation" t-attf-href="/my/consultations?{{ keep_query() }}">Consultations</a>
+                <t t-else="">Consultations</t>
+            </li>
+            <li t-if="consultation" class="breadcrumb-item active">
+                <t t-esc="consultation.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_consultation" name="My consultation">
+        <t t-call="portal.portal_layout">
+
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <h5><span t-field="consultation.name" /></h5>
+                </t>
+                <t t-set="card_body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Animal: </strong><span t-field="consultation.animal_id" /></p>
+                            <p><strong>Tutor: </strong><span t-field="consultation.partner_id" /></p>
+                        </div>
+                        <div class="col-6">
+                            <p><strong>Stage: </strong><span t-field="consultation.stage_id" /></p>
+                            <p><strong>Date: </strong><span t-field="consultation.date" /></p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="width: 100%; margin: 20px;">
+                        <h5><strong>Description: </strong></h5> <br />
+                        <span t-field="consultation.description" />
+                    </div>
+                    <div class="text-center" style="width: 100%; margin: 20px;">
+                        <h5><strong>Products: </strong></h5>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price Unit</th>
+                                <th>Subtotal</th>
+                                <th>Invoiced</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="consultation.consultation_product_ids" t-as="product">
+                                <tr>
+                                    <td><span t-field="product.product_id" /></td>
+                                    <td><span t-field="product.quantity" /></td>
+                                    <td><span t-field="product.price_unit" t-options='{"widget": "monetary", "display_currency": consultation.currency_id}'/></td>
+                                    <td><span t-field="product.subtotal" t-options='{"widget": "monetary", "display_currency": consultation.currency_id}' /></td>
+                                    <td>
+                                        <t t-if="product.invoiced">
+                                            <i class="fa fa-check" />
+                                        </t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <p class="text-right"><strong>Total: </strong><span t-field="consultation.total_products" t-options='{"widget": "monetary", "display_currency": consultation.currency_id}'/></p>
+                        <p class="text-right"><strong>Total Invoiced: </strong><span t-field="consultation.total_invoiced" t-options='{"widget": "monetary", "display_currency": consultation.currency_id}'/></p>
+                </t>
+            </t>
+            <div class="container" style="margin-top: 50px;">
+                <h4 class="text-center"><strong>Message and communication history</strong></h4>
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="consultation"/>
+                    <t t-set="token" t-value="consultation.access_token"/>
+                    <t t-set="pid" t-value="pid"/>
+                    <t t-set="hash" t-value="hash"/>
+                </t>
+            </div>
+        </t>
+
+
+    </template>
+
+</odoo>

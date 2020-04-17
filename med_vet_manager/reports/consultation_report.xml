@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <report id="attendance_report_model"
-        model="animal.attendance"
-        string="Attendance Report"
+    <report id="consultation_report_model"
+        model="animal.consultation"
+        string="Consultation Report"
         report_type="qweb-pdf"
-        name="med_vet_manager.attendance_report"
-        file="med_vet_manager.attendance_report"
-        print_report_name="'Attendance Report - %s' % (object.name)" />
+        name="med_vet_manager.consultation_report"
+        file="med_vet_manager.consultation_report"
+        print_report_name="'Consultation Report - %s' % (object.name)" />
 
-    <template id="attendance_report">
+    <template id="consultation_report">
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <t t-foreach="docs" t-as="o">
@@ -53,7 +53,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="o.attendance_product_ids" t-as="product">
+                                <t t-foreach="o.consultation_product_ids" t-as="product">
                                     <tr>
                                         <td><span t-field="product.product_id" /></td>
                                         <td><span t-field="product.quantity" /></td>
