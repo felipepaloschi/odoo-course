@@ -159,7 +159,7 @@ class AnimalConsultationProduct(models.Model):
     price_unit = fields.Float(string="Price Unit")
     subtotal = fields.Float(string="Subtotal", compute="_compute_subtotal")
     invoiced = fields.Boolean(
-        string="Invoiced", compute="_compute_invoiced", store=True
+        string="Invoiced", compute="_compute_invoiced"
     )
     consultation_id = fields.Many2one(
         comodel_name="animal.consultation", string="Consultation"
@@ -169,7 +169,6 @@ class AnimalConsultationProduct(models.Model):
     )
 
     @api.multi
-    @api.depends("invoice_line_id")
     def _compute_invoiced(self):
         for item in self:
             item.invoiced = True if item.invoice_line_id else False
