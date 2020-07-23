@@ -1,2 +1,2 @@
 # odoo-course
-Repository for the odoo course project
+Repository for the odoo course project.
