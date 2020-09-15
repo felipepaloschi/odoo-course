@@ -62,20 +62,18 @@ class AnimalConsultation(models.Model):
         default=lambda self: self.env.user.company_id.currency_id.id,
     )
 
-    @api.multi
     def _compute_invoice_counter(self):
         for item in self:
             item.invoice_counter = len(
                 item.consultation_product_ids.mapped(
-                    "invoice_line_id"
-                ).mapped("invoice_id")
+                    "move_line_id"
+                ).mapped("move_id")
             )
 
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
         return self.env["animal.stage"].sudo().search(domain, order=order)
 
-    @api.multi
     def name_get(self):
         res = []
         for item in self:
@@ -84,14 +82,12 @@ class AnimalConsultation(models.Model):
             )
         return res
 
-    @api.multi
     def _compute_total_products(self):
         for item in self:
             item.total_products = sum(
                 product.subtotal for product in item.consultation_product_ids
             )
 
-    @api.multi
     def _compute_total_invoiced(self):
         for item in self:
             item.total_invoiced = sum(
@@ -101,14 +97,14 @@ class AnimalConsultation(models.Model):
             )
 
     def open_invoices(self):
-        invoices = self.consultation_product_ids.mapped(
-            "invoice_line_id"
-        ).mapped("invoice_id")
+        moves = self.consultation_product_ids.mapped(
+            "move_line_id"
+        ).mapped("move_id")
         return {
             "type": "ir.actions.act_window",
-            "res_model": "account.invoice",
+            "res_model": "account.move",
             "views": [[False, "tree"], [False, "form"]],
-            "domain": [["id", "in", invoices.ids]],
+            "domain": [["id", "in", moves.ids]],
             "name": "{} - {} Invoices".format(self.name, self.animal_id.name),
         }
 
@@ -124,7 +120,6 @@ class AnimalConsultation(models.Model):
         res.check_animal_tutor()
         return res
 
-    @api.multi
     def write(self, vals):
         res = super(AnimalConsultation, self).write(vals)
         for item in self:
@@ -146,6 +141,7 @@ class AnimalStage(models.Model):
     name = fields.Char(string="Name")
     sequence = fields.Integer(string="Sequence")
     fold = fields.Boolean(string="Fold")
+    description = fields.Char(string="Description")
 
 
 class AnimalConsultationProduct(models.Model):
@@ -164,28 +160,24 @@ class AnimalConsultationProduct(models.Model):
     consultation_id = fields.Many2one(
         comodel_name="animal.consultation", string="Consultation"
     )
-    invoice_line_id = fields.Many2one(
-        comodel_name="account.invoice.line", string="Invoice Line"
+    move_line_id = fields.Many2one(
+        comodel_name="account.move.line", string="Invoice Line"
     )
 
-    @api.multi
     def _compute_invoiced(self):
         for item in self:
-            item.invoiced = True if item.invoice_line_id else False
+            item.invoiced = True if item.move_line_id else False
 
-    @api.multi
     @api.onchange("product_id")
     def _onchange_product_id(self):
         for item in self:
             item.price_unit = item.product_id.list_price
 
-    @api.multi
     @api.onchange("product_id", "price_unit", "quantity")
     def _compute_subtotal(self):
         for item in self:
             item.subtotal = item.price_unit * item.quantity
 
-    @api.multi
     def unlink(self):
         if any(item.invoiced for item in self):
             raise UserError(_("You can't delete a invoiced line!"))

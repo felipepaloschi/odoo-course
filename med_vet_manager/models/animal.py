@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields
 
 
 class ResAnimal(models.Model):
@@ -28,9 +28,11 @@ class ResAnimal(models.Model):
     )
     birthday = fields.Date(string="Birthday", track_visibility="onchange")
     age = fields.Integer(string="Age", compute="_compute_age")
+
     active = fields.Boolean(
         string="Active", default=True, track_visibility="onchange"
     )
+
     consultation_counter = fields.Integer(
         string="Consultation Counter", compute="_compute_consultation_counter"
     )
@@ -41,9 +43,8 @@ class ResAnimal(models.Model):
     def _compute_access_url(self):
         super(ResAnimal, self)._compute_access_url()
         for animal in self:
-            animal.access_url = '/my/animals/%s' % (animal.id)
+            animal.access_url = "/my/animals/%s" % (animal.id)
 
-    @api.multi
     def _compute_age(self):
         for item in self:
             if item.birthday:
@@ -53,17 +54,15 @@ class ResAnimal(models.Model):
             else:
                 item.age = 0
 
-    @api.multi
     def _compute_consultation_counter(self):
         for item in self:
             item.consultation_counter = self.env[
                 "animal.consultation"
             ].search_count([("animal_id", "=", item.id)])
 
-    @api.multi
     def _compute_amount_invoiced(self):
         for item in self:
-            invoices = self.env["account.invoice"].search(
+            invoices = self.env["account.move"].search(
                 [
                     ("animal_id", "=", item.id),
                     ("state", "in", ["open", "paid"]),
@@ -102,7 +101,7 @@ class ResAnimal(models.Model):
     def open_invoices(self):
         return {
             "type": "ir.actions.act_window",
-            "res_model": "account.invoice",
+            "res_model": "account.move",
             "views": [[False, "tree"], [False, "form"]],
             "domain": [["animal_id", "=", self.id]],
             "name": "{} Invoices".format(self.name),

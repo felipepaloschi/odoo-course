@@ -16,7 +16,7 @@
         "views/animal_breed.xml",
         "views/animal_class.xml",
         "views/animal_consultation.xml",
-        "views/account_invoice.xml",
+        "views/account_move.xml",
         "templates/animals.xml",
         "templates/consultations.xml",
         "reports/consultation_report.xml",

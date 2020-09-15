@@ -4,7 +4,6 @@
     <record id="action_view_animal_class" model="ir.actions.act_window">
          <field name="name">Class</field>
          <field name="res_model">animal.class</field>
-         <field name="view_type">form</field>
          <field name="view_mode">tree,form</field>
    </record>
 

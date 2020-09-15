@@ -46,26 +46,26 @@ class ConsultationInvoicing(models.TransientModel):
         return res
 
     def button_generate_invoice(self):
-        lines = self.consultation_line_ids.filtered(lambda x: x.invoice)
+        lines = self.consultation_line_ids.filtered(lambda x: x.to_invoice)
         if not lines:
             raise UserError(_("Please select some lines to invoice!"))
-        invoice = self.env["account.invoice"].create(
+        move = self.env["account.move"].create(
             {
                 "partner_id": self.consultation_id.partner_id.id,
                 "animal_id": self.consultation_id.animal_id.id,
             }
         )
-        InvoiceLine = self.env["account.invoice.line"]
+        MoveLine = self.env["account.move.line"]
         for line in lines:
-            account = InvoiceLine.get_invoice_line_account(
+            account = MoveLine.get_invoice_line_account(
                 "out_invoice",
                 line.product_id,
                 False,
                 self.env.user.company_id,
             )
-            inv_line = InvoiceLine.create(
+            move_line = MoveLine.create(
                 {
-                    "invoice_id": invoice.id,
+                    "move_id": move.id,
                     "name": line.product_id.name,
                     "product_id": line.product_id.id,
                     "quantity": line.quantity,
@@ -73,15 +73,15 @@ class ConsultationInvoicing(models.TransientModel):
                     "account_id": account.id if account else False,
                 }
             )
-            line.consultation_product_id.invoice_line_id = inv_line
-        view_id = self.env.ref("account.invoice_form").id
+            line.consultation_product_id.move_line_id = move_line
+        view_id = self.env.ref("account.view_move_form").id
         return {
             "view_type": "form",
             "view_mode": "form",
-            "res_model": "account.invoice",
+            "res_model": "account.move",
             "type": "ir.actions.act_window",
             "target": "current",
-            "res_id": invoice.id,
+            "res_id": move.id,
             'views': [[view_id, 'form']],
         }
 
@@ -102,4 +102,4 @@ class ConsultationInvoicingLine(models.TransientModel):
     quantity = fields.Integer(string="Quantity", readonly=True)
     price_unit = fields.Float(string="Price Unit", readonly=True)
     subtotal = fields.Float(string="Subtotal", readonly=True)
-    invoice = fields.Boolean(string="To Invoice")
+    to_invoice = fields.Boolean(string="To Invoice")

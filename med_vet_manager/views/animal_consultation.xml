@@ -4,7 +4,6 @@
     <record id="action_view_consultations" model="ir.actions.act_window">
          <field name="name">Consultations</field>
          <field name="res_model">animal.consultation</field>
-         <field name="view_type">form</field>
          <field name="view_mode">kanban,tree,form</field>
    </record>
 
@@ -44,10 +43,10 @@
                         <button class="oe_stat_button" name="open_invoices" type="object" icon="fa-dollar" title="Invoices">
                             <field string="Invoices" name="invoice_counter" widget="statinfo"/>
                         </button>
-                        <button name="toggle_active" type="object"
+                        <!-- <button name="toggle_active" type="object"
                                 class="oe_stat_button" icon="fa-archive">
                             <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
-                        </button>
+                        </button> -->
                     </div>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Name"/>
@@ -76,7 +75,7 @@
                                     <field name="price_unit" />
                                     <field name="subtotal" />
                                     <field name="invoiced" />
-                                    <field name="invoice_line_id" invisible="1" />
+                                    <field name="move_line_id" invisible="1" />
                                 </tree>
                             </field>
                             <group class="oe_subtotal_footer oe_right" colspan="2">
@@ -151,7 +150,7 @@
         <field name="arch" type="xml">
             <kanban default_group_by="stage_id" class="o_kanban_small_column" on_create="quick_create" quick_create_view="med_vet_manager.quick_create_consultation"
                     archivable="false" group_create="false">
-                    <field name="stage_id" options='{"group_by_tooltip": {"requirements": "Description", "legend_priority": "Use of stars"}}'/>
+                    <field name="stage_id" options='{"group_by_tooltip": {"description": "Description"}}'/>
                     <field name="name"/>
                     <field name="color"/>
                     <field name="message_needaction_counter"/>
@@ -212,7 +211,6 @@
     <record id="action_view_animal_stage" model="ir.actions.act_window">
          <field name="name">Stages</field>
          <field name="res_model">animal.stage</field>
-         <field name="view_type">form</field>
          <field name="view_mode">tree,form</field>
    </record>
 
