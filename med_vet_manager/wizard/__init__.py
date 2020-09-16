@@ -1,1 +1,2 @@
-from . import consultation_invoicing
+from . import appointment_sale
+

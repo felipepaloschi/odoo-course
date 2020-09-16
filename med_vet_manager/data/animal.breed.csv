@@ -1,0 +1,5 @@
+id,name,species_id:id,class_id:id
+breed_labrator,Labrador,species_dog,class_canidae
+breed_golden,Golden Retriever,species_dog,class_canidae
+breed_german_shepherd,Pastor Alemão,species_dog,class_canidae
+breed_persian_cat,Persa,species_cat,class_felidae

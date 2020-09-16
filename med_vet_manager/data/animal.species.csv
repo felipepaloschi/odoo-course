@@ -1,0 +1,7 @@
+id,name,class_id:id
+species_dog,Cão,class_canidae
+species_wolf,Lobo,class_canidae
+species_jackal,Chacal,class_canidae
+species_cat,Gato Doméstico,class_felidae
+species_lion,Leão,class_felidae
+species_crocodile,Crocodilo,class_reptilia

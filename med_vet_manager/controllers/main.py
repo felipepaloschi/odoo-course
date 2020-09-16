@@ -10,13 +10,13 @@ class VetPortalController(CustomerPortal):
             VetPortalController, self
         )._prepare_portal_layout_values()
         animal_count = request.env["res.animal"].search_count([])
-        consultation_count = request.env["animal.consultation"].search_count(
+        appointment_count = request.env["animal.appointment"].search_count(
             []
         )
         values.update(
             {
                 "animal_count": animal_count,
-                "consultation_count": consultation_count,
+                "appointment_count": appointment_count,
             },
         )
         return values
@@ -80,10 +80,10 @@ class VetPortalController(CustomerPortal):
         )
         return request.render("med_vet_manager.portal_my_animal", values)
 
-    # CONSULTATIONS
+    # APPOINTMENTS
 
-    @http.route("/my/consultations", type="http", auth="user", website=True)
-    def consultations_list(self, sortby=None, **kw):
+    @http.route("/my/appointments", type="http", auth="user", website=True)
+    def appointments_list(self, sortby=None, **kw):
         values = self._prepare_portal_layout_values()
 
         searchbar_sortings = {
@@ -96,56 +96,56 @@ class VetPortalController(CustomerPortal):
             sortby = "date"
         sort_order = searchbar_sortings[sortby]["order"]
 
-        consultations = request.env["animal.consultation"].search(
+        appointments = request.env["animal.appointment"].search(
             [], order=sort_order
         )
 
         values.update(
             {
-                "consultations": consultations,
-                "page_name": "my_consultations",
-                "default_url": "/my/consultations",
+                "appointments": appointments,
+                "page_name": "my_appointments",
+                "default_url": "/my/appointments",
                 "searchbar_sortings": searchbar_sortings,
                 "sortby": sortby,
             }
         )
-        return request.render("med_vet_manager.consultations_list", values)
+        return request.render("med_vet_manager.appointments_list", values)
 
-    def _consultation_get_page_view_values(
-        self, consultation, access_token, **kwargs
+    def _appointment_get_page_view_values(
+        self, appointment, access_token, **kwargs
     ):
         values = {
-            "page_name": "consultation",
-            "consultation": consultation,
+            "page_name": "appointment",
+            "appointment": appointment,
         }
         return self._get_page_view_values(
-            consultation,
+            appointment,
             access_token,
             values,
-            "my_consultations_history",
+            "my_appointments_history",
             False,
             **kwargs
         )
 
     @http.route(
-        ["/my/consultations/<int:consultation_id>"],
+        ["/my/appointments/<int:appointment_id>"],
         type="http",
         auth="public",
         website=True,
     )
-    def portal_my_consultation(
-        self, consultation_id=None, access_token=None, **kw
+    def portal_my_appointment(
+        self, appointment_id=None, access_token=None, **kw
     ):
         try:
-            consultation_sudo = self._document_check_access(
-                "animal.consultation", consultation_id, access_token
+            appointment_sudo = self._document_check_access(
+                "animal.appointment", appointment_id, access_token
             )
         except (AccessError, MissingError):
             return request.redirect("/my")
 
-        values = self._consultation_get_page_view_values(
-            consultation_sudo, access_token, **kw
+        values = self._appointment_get_page_view_values(
+            appointment_sudo, access_token, **kw
         )
         return request.render(
-            "med_vet_manager.portal_my_consultation", values
+            "med_vet_manager.portal_my_appointment", values
         )

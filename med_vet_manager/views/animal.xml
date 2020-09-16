@@ -31,21 +31,18 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="create_new_consultation" type="object" string="Create New Consultation" class="oe_highlight" />
+                    <button name="create_new_appointment" type="object" string="Create New Appointment" class="oe_highlight" />
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="open_invoices" type="object" icon="fa-dollar" title="Invoiced">
-                            <field string="Invoiced" name="amount_invoiced" widget="statinfo monetary"/>
+                        <button class="oe_stat_button" name="open_sales" type="object" icon="fa-dollar" title="Sold">
+                            <field string="Sold" name="amount_sold" widget="statinfo monetary"/>
                         </button>
-                        <button class="oe_stat_button" name="open_consultations" type="object" icon="fa-user-md" title="Consultations">
-                            <field string="Consultations" name="consultation_counter" widget="statinfo"/>
+                        <button class="oe_stat_button" name="open_appointments" type="object" icon="fa-user-md" title="Appointments">
+                            <field string="Appointments" name="appointment_counter" widget="statinfo"/>
                         </button>
-                        <!-- <button name="toggle_active" type="object"
-                                class="oe_stat_button" icon="fa-archive">
-                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
-                        </button> -->
                     </div>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_128&quot;}"/>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Name"/>
                         <h1><field name="name"/></h1>
@@ -90,6 +87,7 @@
         <field name="model">res.animal</field>
         <field name="arch" type="xml">
             <kanban>
+                <field name="id" />
                 <field name="name" />
                 <field name="tutor_id" />
                 <field name="species_id" />
@@ -97,7 +95,7 @@
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
-                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('animal.breed', 'image', record.breed_id.raw_value)}')">
+                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('res.animal', 'image_128', record.id.raw_value)}')">
                             </div>
                             <div class="oe_kanban_details">
                                 <strong class="o_kanban_record_title"><field name="name"/></strong>

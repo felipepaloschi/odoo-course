@@ -2,16 +2,16 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
 
-class AnimalConsultation(models.Model):
-    _name = "animal.consultation"
-    _description = "Animal Consultation"
+class AnimalAppointment(models.Model):
+    _name = "animal.appointment"
+    _description = "Animal Appointment"
     _inherit = ["mail.thread", "mail.activity.mixin", "portal.mixin"]
 
     _order = "date, id"
 
-    def _get_consultation_name(self):
+    def _get_appointment_name(self):
         return self.env["ir.sequence"].next_by_code(
-            "consultation.name.sequence"
+            "appointment.name.sequence"
         )
 
     name = fields.Char(
@@ -19,15 +19,15 @@ class AnimalConsultation(models.Model):
         readonly=True,
         copy=False,
         required=True,
-        default=_get_consultation_name,
+        default=_get_appointment_name,
         track_visibility="always",
     )
     description = fields.Text(string="Description")
     animal_id = fields.Many2one(comodel_name="res.animal", string="Animal")
     partner_id = fields.Many2one(comodel_name="res.partner", string="Tutor")
-    consultation_product_ids = fields.One2many(
-        comodel_name="animal.consultation.product",
-        inverse_name="consultation_id",
+    appointment_product_ids = fields.One2many(
+        comodel_name="animal.appointment.product",
+        inverse_name="appointment_id",
         string="Products",
     )
     stage_id = fields.Many2one(
@@ -51,8 +51,8 @@ class AnimalConsultation(models.Model):
     total_invoiced = fields.Float(
         string="Total Invoiced Products", compute="_compute_total_invoiced"
     )
-    invoice_counter = fields.Integer(
-        string="Invoice Counter", compute="_compute_invoice_counter"
+    sale_counter = fields.Integer(
+        string="Sale Counter", compute="_compute_sale_counter"
     )
 
     date = fields.Datetime(string="Date")
@@ -62,12 +62,12 @@ class AnimalConsultation(models.Model):
         default=lambda self: self.env.user.company_id.currency_id.id,
     )
 
-    def _compute_invoice_counter(self):
+    def _compute_sale_counter(self):
         for item in self:
-            item.invoice_counter = len(
-                item.consultation_product_ids.mapped(
-                    "move_line_id"
-                ).mapped("move_id")
+            item.sale_counter = len(
+                item.appointment_product_ids.mapped(
+                    "sale_line_id"
+                ).mapped("order_id")
             )
 
     @api.model
@@ -85,52 +85,52 @@ class AnimalConsultation(models.Model):
     def _compute_total_products(self):
         for item in self:
             item.total_products = sum(
-                product.subtotal for product in item.consultation_product_ids
+                product.subtotal for product in item.appointment_product_ids
             )
 
     def _compute_total_invoiced(self):
         for item in self:
             item.total_invoiced = sum(
                 product.subtotal
-                for product in item.consultation_product_ids
+                for product in item.appointment_product_ids
                 if product.invoiced
             )
 
-    def open_invoices(self):
-        moves = self.consultation_product_ids.mapped(
-            "move_line_id"
-        ).mapped("move_id")
+    def open_sales(self):
+        orders = self.appointment_product_ids.mapped(
+            "sale_line_id"
+        ).mapped("order_id")
         return {
             "type": "ir.actions.act_window",
-            "res_model": "account.move",
+            "res_model": "sale.order",
             "views": [[False, "tree"], [False, "form"]],
-            "domain": [["id", "in", moves.ids]],
-            "name": "{} - {} Invoices".format(self.name, self.animal_id.name),
+            "domain": [["id", "in", orders.ids]],
+            "name": "{} - {} Sales".format(self.name, self.animal_id.name),
         }
 
     def check_animal_tutor(self):
         if self.partner_id != self.animal_id.tutor_id:
             raise UserError(
-                _("The consultation partner must be the animal tutor!")
+                _("The appointment partner must be the animal tutor!")
             )
 
     @api.model
     def create(self, vals):
-        res = super(AnimalConsultation, self).create(vals)
+        res = super(AnimalAppointment, self).create(vals)
         res.check_animal_tutor()
         return res
 
     def write(self, vals):
-        res = super(AnimalConsultation, self).write(vals)
+        res = super(AnimalAppointment, self).write(vals)
         for item in self:
             item.check_animal_tutor()
         return res
 
     def _compute_access_url(self):
-        super(AnimalConsultation, self)._compute_access_url()
-        for consultation in self:
-            consultation.access_url = "/my/consultations/%s" % (
-                consultation.id
+        super(AnimalAppointment, self)._compute_access_url()
+        for appointment in self:
+            appointment.access_url = "/my/appointments/%s" % (
+                appointment.id
             )
 
 
@@ -144,12 +144,12 @@ class AnimalStage(models.Model):
     description = fields.Char(string="Description")
 
 
-class AnimalConsultationProduct(models.Model):
-    _name = "animal.consultation.product"
-    _description = "Animal Consultation product"
+class AnimalAppointmentProduct(models.Model):
+    _name = "animal.appointment.product"
+    _description = "Animal Appointment product"
 
     product_id = fields.Many2one(
-        comodel_name="product.product", string="Product",
+        comodel_name="product.product", string="Product", required=True
     )
     quantity = fields.Integer(string="Quantity", default=1)
     price_unit = fields.Float(string="Price Unit")
@@ -157,16 +157,16 @@ class AnimalConsultationProduct(models.Model):
     invoiced = fields.Boolean(
         string="Invoiced", compute="_compute_invoiced"
     )
-    consultation_id = fields.Many2one(
-        comodel_name="animal.consultation", string="Consultation"
+    appointment_id = fields.Many2one(
+        comodel_name="animal.appointment", string="Appointment"
     )
-    move_line_id = fields.Many2one(
-        comodel_name="account.move.line", string="Invoice Line"
+    sale_line_id = fields.Many2one(
+        comodel_name="sale.order.line", string="Sale Line"
     )
 
     def _compute_invoiced(self):
         for item in self:
-            item.invoiced = True if item.move_line_id else False
+            item.invoiced = True if item.sale_line_id else False
 
     @api.onchange("product_id")
     def _onchange_product_id(self):
@@ -181,4 +181,4 @@ class AnimalConsultationProduct(models.Model):
     def unlink(self):
         if any(item.invoiced for item in self):
             raise UserError(_("You can't delete a invoiced line!"))
-        return super(AnimalConsultationProduct, self).unlunk()
+        return super(AnimalAppointmentProduct, self).unlink()

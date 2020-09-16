@@ -4,7 +4,12 @@ from odoo import models, fields
 class ResAnimal(models.Model):
     _name = "res.animal"
     _description = "Animal"
-    _inherit = ["mail.thread", "mail.activity.mixin", "portal.mixin"]
+    _inherit = [
+        "mail.thread",
+        "mail.activity.mixin",
+        "portal.mixin",
+        "image.mixin",
+    ]
 
     name = fields.Char(
         string="Name", required=True, track_visibility="always"
@@ -33,11 +38,11 @@ class ResAnimal(models.Model):
         string="Active", default=True, track_visibility="onchange"
     )
 
-    consultation_counter = fields.Integer(
-        string="Consultation Counter", compute="_compute_consultation_counter"
+    appointment_counter = fields.Integer(
+        string="Appointment Counter", compute="_compute_appointment_counter"
     )
-    amount_invoiced = fields.Float(
-        string="Amount Invoiced", compute="_compute_amount_invoiced"
+    amount_sold = fields.Float(
+        string="Amount Invoiced", compute="_compute_amount_sold"
     )
 
     def _compute_access_url(self):
@@ -54,55 +59,55 @@ class ResAnimal(models.Model):
             else:
                 item.age = 0
 
-    def _compute_consultation_counter(self):
+    def _compute_appointment_counter(self):
         for item in self:
-            item.consultation_counter = self.env[
-                "animal.consultation"
+            item.appointment_counter = self.env[
+                "animal.appointment"
             ].search_count([("animal_id", "=", item.id)])
 
-    def _compute_amount_invoiced(self):
+    def _compute_amount_sold(self):
         for item in self:
-            invoices = self.env["account.move"].search(
+            orders = self.env["sale.order"].search(
                 [
                     ("animal_id", "=", item.id),
-                    ("state", "in", ["open", "paid"]),
+                    ("state", "in", ["sale", "done"]),
                 ]
             )
-            item.amount_invoiced = sum(inv.amount_total for inv in invoices)
+            item.amount_sold = sum(order.amount_total for order in orders)
 
-    def create_new_consultation(self):
-        consultation = self.env["animal.consultation"].create(
+    def create_new_appointment(self):
+        appointment = self.env["animal.appointment"].create(
             {
                 "animal_id": self.id,
                 "partner_id": self.tutor_id.id,
                 "stage_id": self.env.ref(
-                    "med_vet_manager.consultation_waiting_consultation"
+                    "med_vet_manager.appointment_waiting_appointment"
                 ).id,
             }
         )
         return {
             "view_type": "form",
             "view_mode": "form",
-            "res_model": "animal.consultation",
+            "res_model": "animal.appointment",
             "type": "ir.actions.act_window",
             "target": "current",
-            "res_id": consultation.id,
+            "res_id": appointment.id,
         }
 
-    def open_consultations(self):
+    def open_appointments(self):
         return {
             "type": "ir.actions.act_window",
-            "res_model": "animal.consultation",
+            "res_model": "animal.appointment",
             "views": [[False, "tree"], [False, "form"]],
             "domain": [["animal_id", "=", self.id]],
-            "name": "{} Consultations".format(self.name),
+            "name": "{} Appointments".format(self.name),
         }
 
-    def open_invoices(self):
+    def open_sales(self):
         return {
             "type": "ir.actions.act_window",
-            "res_model": "account.move",
+            "res_model": "sale.order",
             "views": [[False, "tree"], [False, "form"]],
             "domain": [["animal_id", "=", self.id]],
-            "name": "{} Invoices".format(self.name),
+            "name": "{} Sales".format(self.name),
         }

@@ -1,52 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="action_view_consultations" model="ir.actions.act_window">
-         <field name="name">Consultations</field>
-         <field name="res_model">animal.consultation</field>
+    <record id="action_view_appointments" model="ir.actions.act_window">
+         <field name="name">Appointments</field>
+         <field name="res_model">animal.appointment</field>
          <field name="view_mode">kanban,tree,form</field>
    </record>
 
-    <menuitem name="Consultations"
-            id="menu_consultations_root"
+    <menuitem name="Appointments"
+            id="menu_appointments_root"
             groups="base.group_user"
             web_icon="med_vet_manager,static/description/icon.jpg"
             sequence="35"/>
     
-    <menuitem name="Consultations"
-            id="menu_consultations_tree"
-            parent="menu_consultations_root"
-            action="action_view_consultations"
+    <menuitem name="Appointments"
+            id="menu_appointments_tree"
+            parent="menu_appointments_root"
+            action="action_view_appointments"
             sequence="1"/>
     
     <menuitem name="Settings"
-            id="menu_consultation_settings"
-            parent="menu_consultations_root"
+            id="menu_appointment_settings"
+            parent="menu_appointments_root"
             sequence="100"/>
 
 
-    <record id="view_animal_consultation_form" model="ir.ui.view">
-        <field name="name">view.animal.consultation.form</field>
-        <field name="model">animal.consultation</field>
+    <record id="view_animal_appointment_form" model="ir.ui.view">
+        <field name="name">view.animal.appointment.form</field>
+        <field name="model">animal.appointment</field>
         <field name="priority">1</field>
         <field name="arch" type="xml">
             <form>
                 <header>
                     <button
-                        name="%(action_consultation_invoicing_wizard_form)d"
-                        string="Create Invoice"
+                        name="%(action_appointment_sale_wizard_form)d"
+                        string="Create Quotation"
                         type="action" class="oe_highlight"/>
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="open_invoices" type="object" icon="fa-dollar" title="Invoices">
-                            <field string="Invoices" name="invoice_counter" widget="statinfo"/>
+                        <button class="oe_stat_button" name="open_sales" type="object" icon="fa-dollar" title="Sales">
+                            <field string="Sales" name="sale_counter" widget="statinfo"/>
                         </button>
-                        <!-- <button name="toggle_active" type="object"
-                                class="oe_stat_button" icon="fa-archive">
-                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
-                        </button> -->
                     </div>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Name"/>
@@ -68,14 +64,14 @@
                             </group>
                         </pange>
                         <page name="products" string="Products">
-                            <field name="consultation_product_ids">
+                            <field name="appointment_product_ids">
                                 <tree name="products" editable="bottom" create="true" edit="true">
                                     <field name="product_id" />
                                     <field name="quantity" />
                                     <field name="price_unit" />
                                     <field name="subtotal" />
                                     <field name="invoiced" />
-                                    <field name="move_line_id" invisible="1" />
+                                    <field name="sale_line_id" invisible="1" />
                                 </tree>
                             </field>
                             <group class="oe_subtotal_footer oe_right" colspan="2">
@@ -99,9 +95,9 @@
         </field>
     </record>
 
-    <record id="view_animal_consultation_tree" model="ir.ui.view">
-        <field name="name">view.animal.consultation.tree</field>
-        <field name="model">animal.consultation</field>
+    <record id="view_animal_appointment_tree" model="ir.ui.view">
+        <field name="name">view.animal.appointment.tree</field>
+        <field name="model">animal.appointment</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
@@ -111,9 +107,9 @@
         </field>
     </record>
 
-    <record id="view_animal_consultation_filter" model="ir.ui.view">
-        <field name="name">view.animal.consultation.filter</field>
-        <field name="model">animal.consultation</field>
+    <record id="view_animal_appointment_filter" model="ir.ui.view">
+        <field name="name">view.animal.appointment.filter</field>
+        <field name="model">animal.appointment</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name" string="Name"/>
@@ -129,9 +125,9 @@
         </field>
     </record>
 
-    <record id="quick_create_consultation" model="ir.ui.view">
-        <field name="name">animal.consultation.form.quick_create</field>
-        <field name="model">animal.consultation</field>
+    <record id="quick_create_appointment" model="ir.ui.view">
+        <field name="name">animal.appointment.form.quick_create</field>
+        <field name="model">animal.appointment</field>
         <field name="priority">100</field>
         <field name="arch" type="xml">
             <form>
@@ -144,11 +140,11 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_animal_consultation_kanban">
-        <field name="name">animal.consultation.kanban</field>
-        <field name="model">animal.consultation</field>
+    <record model="ir.ui.view" id="view_animal_appointment_kanban">
+        <field name="name">animal.appointment.kanban</field>
+        <field name="model">animal.appointment</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="stage_id" class="o_kanban_small_column" on_create="quick_create" quick_create_view="med_vet_manager.quick_create_consultation"
+            <kanban default_group_by="stage_id" class="o_kanban_small_column" on_create="quick_create" quick_create_view="med_vet_manager.quick_create_appointment"
                     archivable="false" group_create="false">
                     <field name="stage_id" options='{"group_by_tooltip": {"description": "Description"}}'/>
                     <field name="name"/>
@@ -216,7 +212,7 @@
 
     <menuitem name="Stages"
             id="menu_animals_stages"
-            parent="menu_consultation_settings"
+            parent="menu_appointment_settings"
             action="action_view_animal_stage"
             sequence="10"/>
 

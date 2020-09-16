@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_appointment_sale_wizard_form" model="ir.ui.view">
+        <field name="name">View Appointment Sale Wizard</field>
+        <field name="model">appointment.sale</field>
+        <field name="arch" type="xml">
+            <form string="Appointment Sale">
+                <field name="appointment_id" invisible="1" />
+                <field name="appointment_line_ids" nolabel="1">
+                    <tree editable="bottom" create="false" delete="false">
+                        <field name="appointment_sale_id" invisible="1"/>
+                        <field name="appointment_product_id" invisible="1"/>
+                        <field name="product_id" />
+                        <field name="quantity" />
+                        <field name="price_unit" />
+                        <field name="subtotal" />
+                        <field name="to_invoice" />
+                    </tree>
+                </field>
+                <footer>
+                    <button name="button_generate_sale"  string="Create Quotation" type="object"
+                        class="oe_highlight" />
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_appointment_sale_wizard_form" model="ir.actions.act_window">
+        <field name="name">Appointment Sale</field>
+        <field name="res_model">appointment.sale</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

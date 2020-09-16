@@ -3,9 +3,9 @@
 
     <!-- ATTEDANCE SEQUENCE -->
 
-    <record id="consultation_name_sequence" model="ir.sequence">
-        <field name="name">Consultation Name</field>
-        <field name="code">consultation.name.sequence</field>
+    <record id="appointment_name_sequence" model="ir.sequence">
+        <field name="name">Appointment Name</field>
+        <field name="code">appointment.name.sequence</field>
         <field name="prefix">AT</field>
         <field name="padding">5</field>
         <field name="number_increment">1</field>
@@ -14,32 +14,32 @@
 
     <!-- STAGES -->
 
-    <record id="consultation_waiting_consultation" model="animal.stage">
+    <record id="appointment_waiting_appointment" model="animal.stage">
         <field name="name">Aguardando Atendimento</field>
         <field name="sequence">1</field>
     </record>
 
-    <record id="consultation_diagnosis" model="animal.stage">
+    <record id="appointment_diagnosis" model="animal.stage">
         <field name="name">Diagnóstico</field>
         <field name="sequence">2</field>
     </record>
 
-    <record id="consultation_treatment" model="animal.stage">
+    <record id="appointment_treatment" model="animal.stage">
         <field name="name">Tratamento</field>
         <field name="sequence">3</field>
     </record>
 
-    <record id="consultation_waiting_return" model="animal.stage">
+    <record id="appointment_waiting_return" model="animal.stage">
         <field name="name">Aguardando Retorno</field>
         <field name="sequence">4</field>
     </record>
 
-    <record id="consultation_return" model="animal.stage">
+    <record id="appointment_return" model="animal.stage">
         <field name="name">Retorno</field>
         <field name="sequence">5</field>
     </record>
 
-    <record id="consultation_done" model="animal.stage">
+    <record id="appointment_done" model="animal.stage">
         <field name="name">Concluído</field>
         <field name="sequence">6</field>
         <field name="fold">1</field>

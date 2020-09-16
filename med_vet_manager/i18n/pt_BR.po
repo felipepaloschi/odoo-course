@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* med_vet_manager
+# 	* med_vet_manager
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0+e\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-21 22:35+0000\n"
-"PO-Revision-Date: 2020-05-21 22:35+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2020-09-16 13:38+0000\n"
+"PO-Revision-Date: 2020-09-16 13:38+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,22 +16,27 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model:ir.actions.report,print_report_name:med_vet_manager.appointment_report_model
+msgid "'Appointment Report - %s' % (object.name)"
+msgstr "'Relatório da Consulta - %s' % (object.name)"
+
+#. module: med_vet_manager
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "<i class=\"fa fa-comments\" aria-label=\"Unread messages\" role=\"img\"/>"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "<span>Animal: </span>"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "<span>Date: </span>"
 msgstr "<span>Data: </span>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "<span>Tutor: </span>"
 msgstr ""
 
@@ -41,7 +46,7 @@ msgid "<strong>Age: </strong>"
 msgstr "<strong>Idade: </strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Animal: </strong>"
 msgstr ""
 
@@ -56,37 +61,37 @@ msgid "<strong>Breed: </strong>"
 msgstr "<strong>Raça: </strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "<strong>Código:</strong>"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "<strong>Data:</strong>"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Date: </strong>"
 msgstr "<strong>Data: </strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Description: </strong>"
 msgstr "<strong>Descrição: </strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "<strong>Estágio:</strong>"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Message and communication history</strong>"
-msgstr ""
+msgstr "<strong>Mensagem e histórico de comunicação</strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Products: </strong>"
 msgstr "<strong>Produtos: </strong>"
 
@@ -96,60 +101,66 @@ msgid "<strong>Species: </strong>"
 msgstr "<strong>Espécie: </strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Stage: </strong>"
 msgstr "<strong>Estágio: </strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Total Invoiced: </strong>"
 msgstr "<strong>Total Faturado: </strong>"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Total: </strong>"
 msgstr ""
 
 #. module: med_vet_manager
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_animal
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "<strong>Tutor: </strong>"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__access_warning
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__access_warning
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__access_warning
 msgid "Access warning"
 msgstr "Aviso de acesso"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_needaction
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_needaction
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_needaction
 msgid "Action Needed"
 msgstr "Ação Necessária"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__active
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__active
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__active
 msgid "Active"
 msgstr "Ativo"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__activity_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_ids
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_ids
 msgid "Activities"
 msgstr "Atividades"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__activity_state
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_exception_decoration
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_state
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_state
 msgid "Activity State"
 msgstr "Estado de Atividade"
 
 #. module: med_vet_manager
-#: code:addons/med_vet_manager/controllers/main.py:30
+#: code:addons/med_vet_manager/controllers/main.py:0
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__age
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.animals_list
 #, python-format
@@ -163,10 +174,10 @@ msgstr "Quantia Faturada"
 
 #. module: med_vet_manager
 #: model:ir.model,name:med_vet_manager.model_res_animal
-#: model:ir.model.fields,field_description:med_vet_manager.field_account_invoice__animal_id
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__animal_id
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultations_list
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_filter
+#: model:ir.model.fields,field_description:med_vet_manager.field_account_move__animal_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__animal_id
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointments_list
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_filter
 msgid "Animal"
 msgstr ""
 
@@ -176,35 +187,20 @@ msgid "Animal #"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_animal_attendance
-msgid "Animal Attendance"
-msgstr "Atendimento ao Animal"
+#: model:ir.model,name:med_vet_manager.model_animal_appointment
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__appointment_id
+msgid "Animal Appointment"
+msgstr "Consulta do Animal"
 
 #. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_animal_attendance_service
-msgid "Animal Attendance Service"
-msgstr "Serviço do Atendimento"
-
-#. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_animal_attendance_product
-msgid "Animal Attendance product"
-msgstr "Produto do Atendimento"
+#: model:ir.model,name:med_vet_manager.model_animal_appointment_product
+msgid "Animal Appointment product"
+msgstr "Produto da Consulta"
 
 #. module: med_vet_manager
 #: model:ir.model,name:med_vet_manager.model_animal_breed
 msgid "Animal Breed"
 msgstr "Raça"
-
-#. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_animal_consultation
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__consultation_id
-msgid "Animal Consultation"
-msgstr "Consulta"
-
-#. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_animal_consultation_product
-msgid "Animal Consultation product"
-msgstr "Produto da Consulta"
 
 #. module: med_vet_manager
 #: model:ir.model,name:med_vet_manager.model_animal_species
@@ -226,20 +222,58 @@ msgid "Animals"
 msgstr "Animais"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_attachment_count
-#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_attachment_count
-msgid "Attachment Count"
-msgstr "Contagem de Anexos"
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__appointment_id
+msgid "Appointment"
+msgstr "Consulta"
 
 #. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_attendance_invoicing
-msgid "Attendance Invoicing"
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__appointment_counter
+msgid "Appointment Counter"
+msgstr "Contador de Consultas"
+
+#. module: med_vet_manager
+#: model:ir.actions.act_window,name:med_vet_manager.action_appointment_invoicing_wizard_form
+#: model:ir.model,name:med_vet_manager.model_appointment_invoicing
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__appointment_invoicing_id
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_appointment_invoicing_wizard_form
+msgid "Appointment Invoicing"
 msgstr "Faturamento da Consulta"
 
 #. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_attendance_invoicing_line
-msgid "Attendance Invoicing Line"
+#: model:ir.model,name:med_vet_manager.model_appointment_invoicing_line
+msgid "Appointment Invoicing Line"
 msgstr "Linha do Faturamento da Consulta"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__appointment_product_id
+msgid "Appointment Product"
+msgstr "Produto da Consulta"
+
+#. module: med_vet_manager
+#: model:ir.actions.report,name:med_vet_manager.appointment_report_model
+msgid "Appointment Report"
+msgstr "Relatório da Consulta"
+
+#. module: med_vet_manager
+#: model:ir.actions.act_window,name:med_vet_manager.action_view_appointments
+#: model:ir.ui.menu,name:med_vet_manager.menu_appointments_root
+#: model:ir.ui.menu,name:med_vet_manager.menu_appointments_tree
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_layout_appointments
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_home_appointment
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_form
+msgid "Appointments"
+msgstr "Consultas"
+
+#. module: med_vet_manager
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointments_list
+msgid "Appointments #"
+msgstr "Consultas #"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_attachment_count
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_attachment_count
+msgid "Attachment Count"
+msgstr "Contagem de Anexos"
 
 #. module: med_vet_manager
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__birthday
@@ -256,7 +290,7 @@ msgid "Breed"
 msgstr "Raça"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_consultation_invoicing_wizard_form
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_appointment_invoicing_wizard_form
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -271,237 +305,200 @@ msgid "Class"
 msgstr "Classe"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__color
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__color
 msgid "Color"
 msgstr "Cor"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__consultation_id
-msgid "Consultation"
-msgstr "Consulta"
-
-#. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__consultation_counter
-msgid "Consultation Counter"
-msgstr "Contador de Consultas"
-
-#. module: med_vet_manager
-#: model:ir.actions.act_window,name:med_vet_manager.action_consultation_invoicing_wizard_form
-#: model:ir.model,name:med_vet_manager.model_consultation_invoicing
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__consultation_invoicing_id
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_consultation_invoicing_wizard_form
-msgid "Consultation Invoicing"
-msgstr "Faturamento da Consulta"
-
-#. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_consultation_invoicing_line
-msgid "Consultation Invoicing Line"
-msgstr "Linha do Faturamento da Consulta"
-
-#. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__consultation_product_id
-msgid "Consultation Product"
-msgstr "Produto da Consulta"
-
-#. module: med_vet_manager
-#: model:ir.actions.report,name:med_vet_manager.consultation_report_model
-msgid "Consultation Report"
-msgstr "Relatório da Consulta"
-
-#. module: med_vet_manager
-#: model:ir.actions.act_window,name:med_vet_manager.action_view_consultations
-#: model:ir.ui.menu,name:med_vet_manager.menu_consultations_root
-#: model:ir.ui.menu,name:med_vet_manager.menu_consultations_tree
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_layout_consultations
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_home_consultation
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_form
-msgid "Consultations"
-msgstr "Consultas"
-
-#. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultations_list
-msgid "Consultations #"
-msgstr "Consultas"
-
-#. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_form
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_consultation_invoicing_wizard_form
-msgid "Create Invoice"
-msgstr "Criar Fatura"
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_form
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_appointment_invoicing_wizard_form
+msgid "Create Quotation"
+msgstr "Criar Cotação"
 
 #. module: med_vet_manager
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_form
-msgid "Create New Consultation"
+msgid "Create New Appointment"
 msgstr "Criar Nova Consulta"
 
 #. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__create_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__create_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__create_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class__create_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__create_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__create_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__create_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__create_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__create_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__create_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__create_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__create_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__create_uid
 msgid "Created by"
 msgstr "Criado por"
 
 #. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__create_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__create_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__create_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class__create_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__create_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__create_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__create_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__create_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__create_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__create_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__create_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__create_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__create_date
 msgid "Created on"
 msgstr "Criado em"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__currency_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__currency_id
 msgid "Currency"
 msgstr "Moeda"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__access_url
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__access_url
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__access_url
 msgid "Customer Portal URL"
 msgstr "Endereço do Portal do Consumidor"
 
 #. module: med_vet_manager
-#: code:addons/med_vet_manager/controllers/main.py:91
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__date
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultations_list
+#: code:addons/med_vet_manager/controllers/main.py:0
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__date
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointments_list
 #, python-format
 msgid "Date"
 msgstr "Data"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "Delete"
 msgstr "Excluir"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__description
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_form
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__description
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__description
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_form
 msgid "Description"
 msgstr "Descrição"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Descrição"
 msgstr ""
 
 #. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__display_name
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__display_name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__display_name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class__display_name
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__display_name
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__display_name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__display_name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__display_name
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__display_name
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__display_name
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__display_name
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__display_name
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__display_name
 msgid "Display Name"
 msgstr "Nome exibido"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "Dropdown menu"
-msgstr "Menu dropdown"
+msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "Edit"
 msgstr "Editar"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Espécie - Raça:"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Faturado?"
 msgstr ""
 
 #. module: med_vet_manager
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__fold
 msgid "Fold"
-msgstr ""
+msgstr "Dobrar"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_follower_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_follower_ids
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_follower_ids
 msgid "Followers"
 msgstr "Seguidores"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_channel_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_channel_ids
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_channel_ids
 msgid "Followers (Channels)"
 msgstr "Seguidores (Canais)"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_partner_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_partner_ids
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "Seguidores (Parceiros)"
 
 #. module: med_vet_manager
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_filter
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_breed_filter
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_filter
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_species_filter
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_filter
 msgid "Group By..."
 msgstr "Agrupar por..."
 
 #. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__id
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__id
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class__id
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__id
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__id
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__id
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__id
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__id
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__id
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__id
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__id
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__id
 msgid "ID"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "INFORMAÇÕES DO ANIMAL:"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "INFORMAÇÕES DO TUTOR:"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_exception_icon
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: med_vet_manager
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__activity_exception_icon
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: med_vet_manager
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Idade:"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__message_unread
-#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_unread
-msgid "If checked new messages require your attention."
-msgstr "Se marcado, novas mensagens solicitarão sua atenção."
-
-#. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__message_needaction
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__message_needaction
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__message_unread
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_needaction
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_unread
 msgid "If checked, new messages require your attention."
 msgstr "Se marcado novas mensagens solicitarão sua atenção."
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__message_has_error
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__message_has_error
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__message_has_sms_error
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_has_error
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se marcado, algumas mensagens tem erro de entrega."
 
@@ -511,91 +508,91 @@ msgid "Image"
 msgstr "Imagem"
 
 #. module: med_vet_manager
-#: model:ir.model,name:med_vet_manager.model_account_invoice
-msgid "Invoice"
-msgstr "Fatura"
-
-#. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__invoice_counter
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__invoice_counter
 msgid "Invoice Counter"
-msgstr ""
+msgstr "Contador de Faturas"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__invoice_line_id
-msgid "Invoice Line"
-msgstr ""
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__move_line_id
+msgid "Sale Line"
+msgstr "Linha da Venda"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__invoiced
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__invoiced
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_form
 msgid "Invoiced"
 msgstr "Faturado"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_form
-msgid "Invoices"
-msgstr "Faturas"
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_form
+msgid "Sales"
+msgstr "Vendas"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_is_follower
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_is_follower
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_is_follower
 msgid "Is Follower"
 msgstr "É um seguidor"
 
 #. module: med_vet_manager
+#: model:ir.model,name:med_vet_manager.model_account_move
+msgid "Journal Entries"
+msgstr "Lançamentos de Diário"
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment____last_update
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product____last_update
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed____last_update
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class____last_update
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation____last_update
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product____last_update
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species____last_update
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage____last_update
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing____last_update
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line____last_update
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing____last_update
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line____last_update
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal____last_update
 msgid "Last Modified on"
 msgstr "Última modificação em"
 
 #. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__write_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__write_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__write_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class__write_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__write_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__write_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__write_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__write_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__write_uid
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__write_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__write_uid
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__write_uid
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__write_uid
 msgid "Last Updated by"
 msgstr "Última atualização por"
 
 #. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__write_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__write_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__write_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class__write_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__write_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__write_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__write_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__write_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__write_date
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__write_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__write_date
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__write_date
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__write_date
 msgid "Last Updated on"
 msgstr "Última atualização em"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_main_attachment_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_main_attachment_id
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_main_attachment_id
 msgid "Main Attachment"
 msgstr "Anexo Principal"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_has_error
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_has_error
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_has_error
 msgid "Message Delivery error"
 msgstr "Erro de entrega de Mensagem"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_ids
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_ids
 msgid "Messages"
 msgstr "Mensagens"
@@ -606,24 +603,24 @@ msgid "My Animals"
 msgstr "Meus Animais"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultations_list
-msgid "My Consultations"
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointments_list
+msgid "My Appointments"
 msgstr "Minhas Consultas"
 
 #. module: med_vet_manager
-#: code:addons/med_vet_manager/controllers/main.py:29
-#: code:addons/med_vet_manager/controllers/main.py:90
+#: code:addons/med_vet_manager/controllers/main.py:0
+#: code:addons/med_vet_manager/controllers/main.py:0
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_breed__name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_class__name
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_species__name
 #: model:ir.model.fields,field_description:med_vet_manager.field_animal_stage__name
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__name
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_form
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_breed_filter
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_breed_form
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_class_form
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_filter
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_form
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_species_filter
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_species_form
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_stage_form
@@ -634,142 +631,136 @@ msgid "Name"
 msgstr "Nome"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Nascimento:"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__activity_date_deadline
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_date_deadline
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "Prazo final para Próxima Atividade"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__activity_summary
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_summary
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_summary
 msgid "Next Activity Summary"
 msgstr "Próximo Sumário de Atividade"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__activity_type_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_type_id
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_type_id
 msgid "Next Activity Type"
 msgstr "Tipo da Próxima Atividade"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_needaction_counter
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_needaction_counter
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_needaction_counter
 msgid "Number of Actions"
 msgstr "Número de ações"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_has_error_counter
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_has_error_counter
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_has_error_counter
-msgid "Number of error"
-msgstr "Número do erro"
+msgid "Number of errors"
+msgstr "Número de Erros"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__message_needaction_counter
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__message_needaction_counter
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_needaction_counter
 msgid "Number of messages which requires an action"
 msgstr "Número de mensagens que requer uma ação"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__message_has_error_counter
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__message_has_error_counter
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "Número de mensagens com erro de entrega"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__message_unread_counter
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__message_unread_counter
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__message_unread_counter
 msgid "Number of unread messages"
 msgstr "Quantidade de mensagens não lidas."
 
 #. module: med_vet_manager
-#: selection:animal.consultation,activity_state:0
-#: selection:res.animal,activity_state:0
-msgid "Overdue"
-msgstr "Atrasado"
-
-#. module: med_vet_manager
-#: selection:animal.consultation,activity_state:0
-#: selection:res.animal,activity_state:0
-msgid "Planned"
-msgstr "Planejado"
-
-#. module: med_vet_manager
-#: code:addons/med_vet_manager/wizard/consultation_invoicing.py:51
+#: code:addons/med_vet_manager/wizard/appointment_invoicing.py:0
 #, python-format
 msgid "Please select some lines to invoice!"
 msgstr "Favor selecionar algumas linhas para faturar!"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__access_url
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__access_url
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__access_url
 msgid "Portal Access URL"
 msgstr "Endereço de Acesso ao Portal"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Preço Unitário"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__price_unit
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__price_unit
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__price_unit
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__price_unit
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "Price Unit"
 msgstr "Preço Unitário"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__product_id
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__product_id
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__product_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__product_id
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "Product"
 msgstr "Produto"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__consultation_product_ids
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_form
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__appointment_product_ids
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_form
 msgid "Products"
 msgstr "Produtos"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Produtos e Serviços"
 msgstr ""
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Quantidade"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__quantity
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__quantity
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__quantity
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__quantity
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "Quantity"
 msgstr "Quantidade"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
 msgid "Relatório de Atendimento"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__user_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__user_id
 msgid "Responsible"
 msgstr "Responsável"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__activity_user_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__activity_user_id
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__activity_user_id
 msgid "Responsible User"
 msgstr "Usuário Responsável"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__access_token
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_has_sms_error
+#: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__access_token
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__access_token
 msgid "Security Token"
 msgstr "Chave de segurança"
@@ -781,7 +772,7 @@ msgstr "Seqüência"
 
 #. module: med_vet_manager
 #: model:ir.ui.menu,name:med_vet_manager.menu_animals_settings
-#: model:ir.ui.menu,name:med_vet_manager.menu_consultation_settings
+#: model:ir.ui.menu,name:med_vet_manager.menu_appointment_settings
 msgid "Settings"
 msgstr "Configurações"
 
@@ -798,10 +789,10 @@ msgid "Species"
 msgstr "Espécies"
 
 #. module: med_vet_manager
-#: code:addons/med_vet_manager/controllers/main.py:92
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__stage_id
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultations_list
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_filter
+#: code:addons/med_vet_manager/controllers/main.py:0
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__stage_id
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointments_list
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_filter
 #, python-format
 msgid "Stage"
 msgstr "Estágio"
@@ -813,29 +804,31 @@ msgid "Stages"
 msgstr "Estágios"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__activity_state
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__activity_state
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__activity_state
-msgid "Status based on activities\n"
+msgid ""
+"Status based on activities\n"
 "Overdue: Due date is already passed\n"
 "Today: Activity date is today\n"
 "Planned: Future activities."
-msgstr "Status baseado em atividades\n"
+msgstr ""
+"Status baseado em atividades\n"
 "Atrasado: Data definida já passou\n"
 "Hoje: Data de atividade é hoje\n"
 "Planejado: Atividades futuras."
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation_product__subtotal
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__subtotal
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultation_report
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_consultation
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment_product__subtotal
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__subtotal
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointment_report
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_appointment
 msgid "Subtotal"
 msgstr ""
 
 #. module: med_vet_manager
-#: code:addons/med_vet_manager/models/animal_consultation.py:118
+#: code:addons/med_vet_manager/models/animal_appointment.py:0
 #, python-format
-msgid "The consultation partner must be the animal tutor!"
+msgid "The appointment partner must be the animal tutor!"
 msgstr "O parceiro da consulta deve ser o tutor do animal!"
 
 #. module: med_vet_manager
@@ -844,86 +837,87 @@ msgid "There are currently no animals for your account."
 msgstr "Não existem animais cadastrados na sua conta."
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultations_list
-msgid "There are currently no consultations for your account."
-msgstr "Não existem consultas na sua conta."
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointments_list
+msgid "There are currently no appointments for your account."
+msgstr "No momento não existem consultas para a sua conta!"
 
 #. module: med_vet_manager
-#: code:addons/med_vet_manager/wizard/consultation_invoicing.py:28
+#: code:addons/med_vet_manager/wizard/appointment_invoicing.py:0
 #, python-format
 msgid "There are no invoiceable products!"
 msgstr "Não existem produtos faturáveis!"
 
 #. module: med_vet_manager
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
-msgid "This bar allows to filter the service orders based on scheduled activities."
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
+msgid ""
+"This bar allows to filter the service orders based on scheduled activities."
 msgstr ""
 
 #. module: med_vet_manager
-#: sql_constraint:animal.breed:0
+#: model:ir.model.constraint,message:med_vet_manager.constraint_animal_breed_breed_name_uniq
 msgid "This breed is already on the system!"
-msgstr "Esta raça já está no sistema!"
+msgstr "Esta raça já existe no sistema!"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing_line__invoice
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing_line__to_invoice
 msgid "To Invoice"
 msgstr "A Faturar"
 
 #. module: med_vet_manager
-#: selection:animal.consultation,activity_state:0
-#: selection:res.animal,activity_state:0
-msgid "Today"
-msgstr "Hoje"
-
-#. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__total_invoiced
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__total_invoiced
 msgid "Total Invoiced Products"
 msgstr "Total de Produtos Faturados"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__total_products
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__total_products
 msgid "Total Products"
 msgstr "Total de Produtos"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__partner_id
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__partner_id
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__tutor_id
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.consultations_list
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_filter
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.appointments_list
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_filter
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.view_res_animal_filter
 msgid "Tutor"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_unread
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__activity_exception_decoration
+#: model:ir.model.fields,help:med_vet_manager.field_res_animal__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: med_vet_manager
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_unread
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_unread
-#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_consultation_kanban
+#: model_terms:ir.ui.view,arch_db:med_vet_manager.view_animal_appointment_kanban
 msgid "Unread Messages"
 msgstr "Mensagens não lidas"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__message_unread_counter
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__message_unread_counter
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr "Contador de Mensagens Não Lidas"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_animal_consultation__website_message_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_animal_appointment__website_message_ids
 #: model:ir.model.fields,field_description:med_vet_manager.field_res_animal__website_message_ids
 msgid "Website Messages"
 msgstr "Mensagens do Site"
 
 #. module: med_vet_manager
-#: model:ir.model.fields,help:med_vet_manager.field_animal_consultation__website_message_ids
+#: model:ir.model.fields,help:med_vet_manager.field_animal_appointment__website_message_ids
 #: model:ir.model.fields,help:med_vet_manager.field_res_animal__website_message_ids
 msgid "Website communication history"
 msgstr "Histórico de Comunicação do Site"
 
 #. module: med_vet_manager
-#: code:addons/med_vet_manager/models/animal_consultation.py:192
+#: code:addons/med_vet_manager/models/animal_appointment.py:0
 #, python-format
 msgid "You can't delete a invoiced line!"
-msgstr ""
+msgstr "Você não pode deletar uma linha faturada"
 
 #. module: med_vet_manager
 #: model:ir.model,name:med_vet_manager.model_animal_class
@@ -931,13 +925,12 @@ msgid "animal.class"
 msgstr ""
 
 #. module: med_vet_manager
-#: model:ir.model.fields,field_description:med_vet_manager.field_consultation_invoicing__consultation_line_ids
+#: model:ir.model.fields,field_description:med_vet_manager.field_appointment_invoicing__appointment_line_ids
 msgid "lines"
-msgstr ""
+msgstr "linhas"
 
 #. module: med_vet_manager
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.animals_list
 #: model_terms:ir.ui.view,arch_db:med_vet_manager.portal_my_animal
 msgid "years"
-msgstr ""
-
+msgstr "anos"
